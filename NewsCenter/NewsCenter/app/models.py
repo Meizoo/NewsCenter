@@ -3,29 +3,27 @@ Definition of models.
 """
 
 from django.db import models
-from enum import Enum
 
-# Create your models here.
+STATE = ( # todo rewrite into Models.field
+		(1, 'BANNED'),
+		(2, 'GUEST'),
+		(3, 'USER'),
+		(4, 'MODERATOR'),
+		(5, 'ADMINISTRATOR'),
+		(6, 'HEAD_ADMINISTRATOR'),	
+	)
 
 class Association(models.Model):
-	name    = name
-	owner   = owner
-	contact = contact
-	address = address
+	name = models.CharField(max_length=32)
+	owner = models.ForeignKey(User)
+	contact = models.CharField(max_length=32)
+	address = models.CharField(max_length=128)
 
 class User(models.Model):
-	name    = name
-	surname = surname
-	age     = age
-	state   = state
-
-class State(Enum):
-	BANNED             = 1
-	GUEST              = 2
-	USER               = 3
-	MODERATOR          = 4
-	ADMINISTRATOR      = 5
-	HEAD_ADMINISTRATOR = 6
+	name = models.CharField(max_length=64)
+	surname = models.CharField(max_length=128)
+	age = models.IntegerField()
+	state = models.CharField(max_length=1, choices=STATE)
 
 class Comment(models.Model):
 	user_id = models.ForeignKey(User)

@@ -23,7 +23,7 @@ class User(models.Model):
 	name = models.CharField(max_length=64)
 	surname = models.CharField(max_length=128)
 	age = models.IntegerField()
-	state = models.CharField(max_length=1, choices=STATE)
+	state = models.IntegerField(max_length=1, choices=STATE)
 
 class Interested(models.Model):
     id_user = models.ForeignKey(User)

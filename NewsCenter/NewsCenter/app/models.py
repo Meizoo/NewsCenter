@@ -23,26 +23,26 @@ class User(models.Model):
 	name = models.CharField(max_length=64)
 	surname = models.CharField(max_length=128)
 	age = models.IntegerField()
-	state = models.IntegerField(max_length=1, choices=STATE)
+	state = models.IntegerField(choices=STATE)
 
 class Interested(models.Model):
-    id_user = models.ForeignKey(User)
-    id_news = models.ForeignKey(News)
+    id_user = models.ForeignKey(User, on_delete=models.PROTECT)
+    id_news = models.ForeignKey(News, on_delete=models.PROTECT)
 
 class Declaration(models.Model):
-    id_user = models.ForeignKey(User)
-    id_news = models.ForeignKey(News)
+    id_user = models.ForeignKey(User, on_delete=models.PROTECT)
+    id_news = models.ForeignKey(News, on_delete=models.PROTECT)
 
 class Comment(models.Model):
-	id_user = models.ForeignKey(User)
+	id_user = models.ForeignKey(User, on_delete=models.PROTECT)
 	comment = models.CharField(max_length=128)
 
 class CommentNews(models.Model):
-    id_comment = models.ForeignKey(Comment)
-    id_news = models.ForeignKey(News)
+    id_comment = models.ForeignKey(Comment, on_delete=models.PROTECT)
+    id_news = models.ForeignKey(News, on_delete=models.PROTECT)
 
 class Association(models.Model):
 	name = models.CharField(max_length=32)
-	owner = models.ForeignKey(User)
+	owner = models.ForeignKey(User, on_delete=models.PROTECT)
 	contact = models.CharField(max_length=32)
 	address = models.CharField(max_length=128)

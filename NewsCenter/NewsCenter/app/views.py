@@ -47,3 +47,16 @@ def about(request):
             'year':datetime.now().year,
         }
     )
+
+def register(request, template_name, authentication_form, extra_context):
+	"""Renders the register page."""
+	assert isinstance(request, HttpRequest)
+	return render(
+		request,
+		'app/register.html',
+		{
+			'title':'Register',
+			'message':'User registration',
+			'year':datetime.now().year,
+		}
+	)

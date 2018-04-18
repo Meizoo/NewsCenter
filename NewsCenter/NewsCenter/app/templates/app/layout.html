@@ -12,8 +12,8 @@
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 
-<body id="override">
-    <div class="navbar navbar-fixed-top">
+<body id="override" class="body-gradient">
+    <div class="navbar navbar-fixed-top blue-gradient">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -25,9 +25,9 @@
             </div>
             <div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="{% if title == 'Home' %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
-					<li class="{% if title == 'About' %}active{% endif %}"><a href="{% url 'about' %}">About</a></li>
-					<li class="{% if title == 'Contact' %}active{% endif %}"><a href="{% url 'contact' %}">Contact</a></li>
+					<li class="{% if title == 'Home' %}blue-activegradient{% endif %}"><a href="{% url 'home' %}">Home</a></li>
+					<li class="{% if title == 'About' %}blue-activegradient{% endif %}"><a href="{% url 'about' %}">About</a></li>
+					<li class="{% if title == 'Contact' %}blue-activegradient{% endif %}"><a href="{% url 'contact' %}">Contact</a></li>
 				</ul>
 				{% include 'app/loginpartial.html' %}
             </div>

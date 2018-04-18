@@ -58,6 +58,8 @@
     <Folder Include="NewsCenter\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\content\bootstrap_override.css" />
+    <Content Include="app\static\app\content\layout.css" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

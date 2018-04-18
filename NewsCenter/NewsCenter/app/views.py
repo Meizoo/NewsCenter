@@ -1,11 +1,14 @@
 """
 Definition of views.
 """
-
-from django.shortcuts import render
+from django.shortcuts import render,render_to_response
 from django.http import HttpRequest
 from django.template import RequestContext
-from datetime import datetime
+from django.utils.safestring import mark_safe
+from django.utils.html import conditional_escape
+from app.calendar_pattern import *
+from datetime import datetime, date
+from calendar import HTMLCalendar
 
 def home(request):
     """Renders the home page."""

@@ -4,19 +4,15 @@ when you run "manage.py test".
 """
 
 import django
+django.setup()
+
 from app import models
 from django.test import TestCase
+
 # TODO: Configure your database in settings.py and sync before running tests.
 
 class ViewTest(TestCase):
 	"""Tests for the application views."""
-
-	if django.VERSION[:2] >= (1, 7):
-		# Django 1.7 requires an explicit setup() when running tests in PTVS
-		@classmethod
-		def setUpClass(cls):
-			super(ViewTest, cls).setUpClass()
-			django.setup()
 
 	def test_home(self):
 		"""Tests the home page."""
@@ -26,7 +22,7 @@ class ViewTest(TestCase):
 	def test_contact(self):
 		"""Tests the contact page."""
 		response = self.client.get('/contact')
-		self.assertContains(response, 'Contact', 3, 200)
+		self.assertContains(response, 'Contact', 4, 200)
 
 	def test_about(self):
 		"""Tests the about page."""
@@ -48,4 +44,3 @@ class UserTest(TestCase):
 			state=4
 		)
 		self.assertContains(user.age, 12, 3, 200)
-		# tmp

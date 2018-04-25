@@ -14,10 +14,13 @@ STATE = ( # todo rewrite into Models.field
 	)
 
 class News(models.Model):
-    title = models.CharField(max_length = 32)
-    date = models.DateTimeField()
-    description = models.TextField()
-    address = models.CharField(max_length = 32)
+	title = models.CharField(max_length = 32)
+	date = models.DateTimeField()
+	description = models.TextField()
+	address = models.CharField(max_length = 32)
+
+	class Meta:
+		verbose_name_plural = 'News'
 
 class User(models.Model):
 	name = models.CharField(max_length=64)
@@ -26,20 +29,23 @@ class User(models.Model):
 	state = models.IntegerField(choices=STATE)
 
 class Interested(models.Model):
-    id_user = models.ForeignKey(User, on_delete=models.PROTECT)
-    id_news = models.ForeignKey(News, on_delete=models.PROTECT)
+	id_user = models.ForeignKey(User, on_delete=models.PROTECT)
+	id_news = models.ForeignKey(News, on_delete=models.PROTECT)
 
 class Declaration(models.Model):
-    id_user = models.ForeignKey(User, on_delete=models.PROTECT)
-    id_news = models.ForeignKey(News, on_delete=models.PROTECT)
+	id_user = models.ForeignKey(User, on_delete=models.PROTECT)
+	id_news = models.ForeignKey(News, on_delete=models.PROTECT)
 
 class Comment(models.Model):
 	id_user = models.ForeignKey(User, on_delete=models.PROTECT)
 	comment = models.CharField(max_length=128)
 
 class CommentNews(models.Model):
-    id_comment = models.ForeignKey(Comment, on_delete=models.PROTECT)
-    id_news = models.ForeignKey(News, on_delete=models.PROTECT)
+	id_comment = models.ForeignKey(Comment, on_delete=models.PROTECT)
+	id_news = models.ForeignKey(News, on_delete=models.PROTECT)
+
+	class Meta:
+		verbose_name_plural = 'CommentNews'
 
 class Association(models.Model):
 	name = models.CharField(max_length=32)

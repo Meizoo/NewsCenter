@@ -47,17 +47,5 @@ body {
 }
 
 .blue-activegradient {
-	background: #3b679e;
-	background: -moz-linear-gradient(
-		top, #3b679e 0%, #207cca 2%, #008cf7 23%, #47afff 45%, #2899fc 53%, #0096ed 77%, #7db9e8 100%
-	);
-	background: -webkit-linear-gradient(
-		top, #3b679e 0%,#207cca 2%,#008cf7 23%,#47afff 45%,#2899fc 53%,#0096ed 77%,#7db9e8 100%
-	);
-	background: linear-gradient(
-		to bottom, #3b679e 0%,#207cca 2%,#008cf7 23%,#47afff 45%,#2899fc 53%,#0096ed 77%,#7db9e8 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(
-		startColorstr='#3b679e', endColorstr='#7db9e8',GradientType=0 
-	);
+	background: rgba(0, 0, 0, 0.25);
 }

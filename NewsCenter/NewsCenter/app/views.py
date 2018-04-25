@@ -11,42 +11,42 @@ from datetime import datetime, date
 from calendar import HTMLCalendar
 
 def home(request):
-    """Renders the home page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/index.html',
-        {
-            'title':'Home',
-            'year':datetime.now().year,
-        }
-    )
+	"""Renders the home page."""
+	assert isinstance(request, HttpRequest)
+	return render(
+		request,
+		'app/index.html',
+		{
+			'title':'Home',
+			'year':datetime.now().year,
+		}
+	)
 
 def contact(request):
-    """Renders the contact page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/contact.html',
-        {
-            'title':'Contact',
-            'message':'Contact page',
-            'year':datetime.now().year,
-        }
-    )
+	"""Renders the contact page."""
+	assert isinstance(request, HttpRequest)
+	return render(
+		request,
+		'app/contact.html',
+		{
+			'title':'Contact',
+			'message':'Contact page',
+			'year':datetime.now().year,
+		}
+	)
 
 def about(request):
-    """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/about.html',
-        {
-            'title':'About',
-            'message':'Project description',
-            'year':datetime.now().year,
-        }
-    )
+	"""Renders the about page."""
+	assert isinstance(request, HttpRequest)
+	return render(
+		request,
+		'app/about.html',
+		{
+			'title':'About',
+			'message':'Project description',
+			'year':datetime.now().year,
+		}
+	)
 
 def register(request, template_name, authentication_form, extra_context):
 	"""Renders the register page."""

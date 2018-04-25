@@ -21,6 +21,12 @@ def home(request):
             'year':datetime.now().year,
         }
     )
+def calendar(request, year, month):
+  my_workouts = Workouts.objects.order_by('my_date').filter(
+    my_date__year=year, my_date__month=month
+  )
+  cal = calendar_pattern(my_workouts).formatmonth(year, month)
+  return render_to_response('layout.html', {'calendar': mark_safe(cal),})
 
 def contact(request):
     """Renders the contact page."""

@@ -18,7 +18,8 @@ urlpatterns = [
     url(r'^$', app.views.home, name='home'),
     url(r'^contact$', app.views.contact, name='contact'),
     url(r'^about', app.views.about, name='about'),
-	url(r'^register/$',
+    url(r'^news', app.views.show_news, name='news'),
+    url(r'^register/$',
 		app.views.register,
 		{
 			'template_name': 'app/register.html',

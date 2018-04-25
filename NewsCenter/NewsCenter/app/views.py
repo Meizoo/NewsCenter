@@ -9,7 +9,7 @@ from django.utils.html import conditional_escape
 from app.calendar_pattern import *
 from datetime import datetime, date
 from calendar import HTMLCalendar
-
+from .models import *
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
@@ -66,3 +66,7 @@ def register(request, template_name, authentication_form, extra_context):
 			'year':datetime.now().year,
 		}
 	)
+
+def show_news(request):
+    news = News.objects.all()
+    return render(request, 'app/news.html', {'news': news})

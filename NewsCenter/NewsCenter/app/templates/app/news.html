@@ -1,0 +1,7 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    {% for new in news %}
+        {{ new.title }} <br /> 
+    {% endfor %}
+{% endblock %}

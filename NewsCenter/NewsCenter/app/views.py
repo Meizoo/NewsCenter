@@ -1,8 +1,9 @@
 """
 Definition of views.
 """
-from django.shortcuts import render,render_to_response
-from django.http import HttpRequest
+
+from django.shortcuts import render,render_to_response,get_object_or_404
+from django.http import HttpRequest,Http404
 from django.template import RequestContext
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
@@ -74,3 +75,6 @@ def show_comments(request):
     comments = Comment.objects.all()
     return render(request, 'app/comments.html', {'comments': comments})
 
+def details(request, pk):
+	new = News.objects.get(id=pk)
+	return render(request, 'app/details.html', {'new': new})

@@ -6,22 +6,25 @@ from datetime import datetime
 from django.conf.urls import url,include
 from django.conf.urls import include
 from django.contrib import admin
-import django.contrib.auth.views
+from django.urls import path
+from app import views
 
+import django.contrib.auth.views
 import app.forms
 import app.views
 
 admin.autodiscover()
 
-urlpatterns = [
+#newspatterns = [url()]
 
-    url(r'^$', app.views.home, name='home'),
-    url(r'^contact$', app.views.contact, name='contact'),
-    url(r'^about', app.views.about, name='about'),
-    url(r'^news', app.views.show_news, name='news'),
-    url(r'^users', app.views.show_users, name='users'),
-    url(r'^comments', app.views.show_comments, name='comments'),
-    url(r'^register/$',
+urlpatterns = [path('', app.views.home, name='home'),
+    path('contact', app.views.contact, name='contact'),
+    path('about', app.views.about, name='about'),
+    path('news', app.views.show_news, name='news'),
+    path('users', app.views.show_users, name='users'),
+    path('comments', app.views.show_comments, name='comments'),
+	path('details/<int:pk>', app.views.details, name='details'),
+    path('register/',
 		app.views.register,
 		{
 			'template_name': 'app/register.html',
@@ -33,7 +36,7 @@ urlpatterns = [
 			}
 		},
 		name='register'),
-	url(r'^login/$',
+	path('login',
 		django.contrib.auth.views.login,
 		{
 			'template_name': 'app/login.html',
@@ -45,13 +48,12 @@ urlpatterns = [
 			}
 		},
 		name='login'),
-	url(r'^logout$',
+	path('logout',
 		django.contrib.auth.views.logout,
 		{
 			'next_page': '/',
 		},
 		name='logout'),
 
-	 url('admin/doc/', include('django.contrib.admindocs.urls')),
-	 url(r'^admin/', admin.site.urls),
-]
+	path('admin/doc/', include('django.contrib.admindocs.urls')),
+	path('admin', admin.site.urls),]

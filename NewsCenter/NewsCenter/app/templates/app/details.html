@@ -1,0 +1,13 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<div>
+    <h1> {{new.title}} </h1>
+	<hr />
+	<h5> {{new.date}} </h5>
+	<p>  {{new.description}} </p>
+	<br /> 
+	<button onclick="window.location='{% url 'news' %}'" class="btn btn-primary">Back to News</button>
+</div>
+
+{% endblock %}

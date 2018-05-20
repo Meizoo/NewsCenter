@@ -1,0 +1,18 @@
+﻿{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | NewsCenter Administrator Panel{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">NewsCenter Administrator Panel</a></h1>
+{% endblock %}
+
+{% block extrastyle %}
+ <style>
+     #header {
+         background-color: darkred;
+     }
+ </style>
+
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

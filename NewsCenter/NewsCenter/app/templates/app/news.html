@@ -1,7 +1,21 @@
 ﻿{% extends "app/layout.html" %}
 
 {% block content %}
+
+<div class="container">
+	<div class="row">
+		{% for new in news %}
+			{% include	'app/_calendar.html' %}
+		{% endfof %}	
+	</div>
+</div>
+
+<h1>News</h1>
     {% for new in news %}
-        {{ new.title }} <br /> 
+        <b>Tytul: {{ new.title }} </b><br /> 
+        Data: {{ new.date }} <br /> 
+        Opis:{{ new.description }} <br /> 
+        Miejsce spotkania: {{ new.address }} <br />
     {% endfor %}
+
 {% endblock %}

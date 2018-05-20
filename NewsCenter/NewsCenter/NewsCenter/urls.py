@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^contact$', app.views.contact, name='contact'),
     url(r'^about', app.views.about, name='about'),
     url(r'^news', app.views.show_news, name='news'),
+    url(r'^users', app.views.show_users, name='users'),
+    url(r'^comments', app.views.show_comments, name='comments'),
     url(r'^register/$',
 		app.views.register,
 		{

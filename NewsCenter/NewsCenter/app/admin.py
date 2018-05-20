@@ -1,6 +1,26 @@
 from django.contrib import admin
 from .models import *
 
-models_db = [User,News,Interested,Declaration,Comment,CommentNews,Association]
+class AdminNews(admin.ModelAdmin):
+    list_display = ('title', 'date', 'description', 'address')
+class AdminInterested(admin.ModelAdmin):
+    list_display = ('id_user','id_news')
+class AdminUser(admin.ModelAdmin):
+    list_display = ('name','surname','age','state')
+class AdminDeclaration(admin.ModelAdmin):
+    list_display = ('id_user','id_news')
+class AdminComment(admin.ModelAdmin):
+    list_display = ('id_user','comment')
+class AdminCommentNews(admin.ModelAdmin):
+    list_display = ('id_comment','id_user')
+class AdminAssociation(admin.ModelAdmin):
+    list_display = ('name', 'owner', 'contact', 'address')
 
-admin.site.register(models_db)
+
+admin.site.register(News, AdminNews)
+admin.site.register(User,AdminUser)
+admin.site.register(Interested)
+admin.site.register(Declaration, AdminDeclaration)
+admin.site.register(Comment)
+admin.site.register(CommentNews)
+admin.site.register(Association,AdminAssociation)

@@ -10,6 +10,7 @@ from app.calendar_pattern import *
 from datetime import datetime, date
 from calendar import HTMLCalendar
 from .models import *
+
 def home(request):
 	"""Renders the home page."""
 	assert isinstance(request, HttpRequest)
@@ -64,3 +65,12 @@ def register(request, template_name, authentication_form, extra_context):
 def show_news(request):
     news = News.objects.all()
     return render(request, 'app/news.html', {'news': news})
+
+def show_users(request):
+    users = User.objects.all()
+    return render(request, 'app/users.html', {'users': users})
+
+def show_comments(request):
+    comments = Comment.objects.all()
+    return render(request, 'app/comments.html', {'comments': comments})
+

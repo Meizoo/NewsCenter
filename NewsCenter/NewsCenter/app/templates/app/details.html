@@ -2,10 +2,10 @@
 
 {% block content %}
 <div>
-    <h1> {{new.title}} </h1>
+    <h1> Tytuł: {{new.title}} </h1>
 	<hr />
-	<h5> {{new.date}} </h5>
-	<p>  {{new.description}} </p>
+	<h5> Data rozpoczęcia: {{new.date|date:"Y m d D"}} </h5>
+	<p>  Opis: {{new.description}} </p>
 	<br /> 
 	<button onclick="window.location='{% url 'news' %}'" class="btn btn-primary">Back to News</button>
 </div>

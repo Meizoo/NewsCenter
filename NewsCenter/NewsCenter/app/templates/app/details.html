@@ -1,7 +1,9 @@
 ﻿{% extends "app/layout.html" %}
 
 {% block content %}
-<div>
+<div class="container jumbotron">
+	<button onclick="window.location='{% url 'news'%} '"></button>
+	<br />
     <h1> Tytuł: {{new.title}} </h1>
 	<hr />
 	<h5> Data rozpoczęcia: {{new.date|date:"Y m d D"}} </h5>

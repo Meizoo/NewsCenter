@@ -16,3 +16,10 @@ class BootstrapAuthenticationForm(AuthenticationForm):
 							   widget=forms.PasswordInput({
 									'class': 'form-control',
 									'placeholder':'Password'}))
+
+class EntryForms(forms.Form):
+	title = forms.CharField(max_length=32)
+	date = forms.DateTimeField()
+	description = forms.CharField(widget = forms.Textarea)
+	address = forms.CharField(max_length = 32)
+

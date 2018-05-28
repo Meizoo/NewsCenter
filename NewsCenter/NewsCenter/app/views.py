@@ -3,7 +3,7 @@ Definition of views.
 """
 
 from django.shortcuts import render,render_to_response,get_object_or_404
-from django.http import HttpRequest,Http404
+from django.http import HttpRequest,Http404,HttpResponseRedirect
 from django.template import RequestContext
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
@@ -11,6 +11,7 @@ from app.calendar_pattern import *
 from datetime import datetime, date
 from calendar import HTMLCalendar
 from .models import *
+from .forms import EntryForms
 
 def home(request):
 	"""Renders the home page."""
@@ -78,3 +79,24 @@ def show_comments(request):
 def details(request, pk):
 	new = News.objects.get(id=pk)
 	return render(request, 'app/details.html', {'new': new})
+
+def add(request):
+
+	if request.method == 'POST':
+		form = EntryForms(request.POST)
+		if form.is_valid():
+			######
+			name = form.cleaned_data['title']
+			date = form.cleaned_data['title']
+			description = form.cleaned_data['title']
+			address = form.cleaned_data['title']
+			
+			News.objects.create(title = title, 
+				date = falase, 
+				description = description	).save()			
+			
+			return HttpResponeRedirect('/')
+	else:
+		form = EntryForms()
+
+	return render(request, 'app/form.html', {'form': form})

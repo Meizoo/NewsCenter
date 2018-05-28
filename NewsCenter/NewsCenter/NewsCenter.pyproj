@@ -68,6 +68,7 @@
     <Content Include="app\templates\admin\base_site.html" />
     <Content Include="app\templates\app\calendar.html" />
     <Content Include="app\templates\app\details.html" />
+    <Content Include="app\templates\app\form.html" />
     <Content Include="app\templates\app\users.html" />
     <Content Include="app\templates\app\comments.html" />
     <Content Include="app\templates\app\news.html" />

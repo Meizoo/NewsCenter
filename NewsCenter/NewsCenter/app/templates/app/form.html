@@ -1,9 +1,27 @@
 ﻿{% extends 'app/layout.html'%}
 
 {% block content %}
-<form method="post">
-	{{ csrf_tokem }} 
-	{{ form	}}
-<button type="submit">Zatwierdz</button>
-</form>
+<div class="container form-group">
+	<br />
+	<div class="row">
+		<div >
+			<h1>Add News</h1>
+		</div>
+		<div >
+			<button onclick="window.location='{% url 'news' %}'" type="button" class="btn btn-primary">Back</button>
+		</div>
+	</div>
+</div>
+<div class="container form-group">
+	<form method="post">
+		{% csrf_token %} 
+		{% for field in form %}
+			{{ field.errors }}
+			<label>{{ field.label }}</label>
+			<input placeholder="{{ field.label }}" class="form-control" name="{{ field.title }}" />
+			<br />
+		{% endfor %}
+	<button type="submit" class="btn btn-primary">Confirm</button>
+	</form>
+</div>
 {% endblock %}

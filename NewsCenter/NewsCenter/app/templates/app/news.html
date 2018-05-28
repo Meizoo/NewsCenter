@@ -1,8 +1,16 @@
 ﻿{% extends "app/layout.html" %}
 
 {% block content %}
+			<h2>Calendar</h2>	
 
 <div class="container">
+	<br />
+	<div class="row">
+		<div class="col-lg-4">
+			<button onclick="window.location='{% url 'add' %}'" type="button" class="btn btn-primary">Add news</button>
+		</div>
+	</div>
+	<hr />
 	<div class="row">
 		{% for new in news %}
 			{% include	'app/calendar.html' %}

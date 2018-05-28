@@ -4118,7 +4118,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 @media (min-width: 768px) {
   .navbar-collapse {
-	width: auto;
+	max-width:50px;
 	border-top: 0;
 	box-shadow: none;
   }

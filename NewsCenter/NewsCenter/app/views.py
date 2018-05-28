@@ -84,18 +84,22 @@ def add(request):
 
 	if request.method == 'POST':
 		form = EntryForms(request.POST)
+
 		if form.is_valid():
 			######
-			name = form.cleaned_data['title']
-			date = form.cleaned_data['title']
-			description = form.cleaned_data['title']
-			address = form.cleaned_data['title']
+			title = form.cleaned_data['title']
+			date = form.cleaned_data['date']
+			description = form.cleaned_data['description']
+			address = form.cleaned_data['address']
 			
-			News.objects.create(title = title, 
-				date = falase, 
-				description = description	).save()			
+			News.objects.create(
+				title = title, 
+				date = date, 
+				description = description,
+				address = address	
+			).save()			
 			
-			return HttpResponeRedirect('/')
+			return HttpResponeRedirect('/news')
 	else:
 		form = EntryForms()
 

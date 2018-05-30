@@ -25,7 +25,7 @@ urlpatterns = [path('', app.views.home, name='home'),
     path('comments', app.views.show_comments, name='comments'),
 	path('details/<int:pk>', app.views.details, name='details'),
 	path('add', app.views.add, name='add'),
-	path('delete/<int:pk>', app.views.delete, name='delete'),
+	path('delete/<int:id>', app.views.delete, name='delete'),
     path('register/',
 		app.views.register,
 		{

@@ -7,6 +7,7 @@ from django.http import HttpRequest,Http404,HttpResponseRedirect
 from django.template import RequestContext
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
+from django.contrib import messages
 from app.calendar_pattern import *
 from datetime import datetime, date
 from calendar import HTMLCalendar
@@ -86,7 +87,6 @@ def add(request):
 		form = EntryForms(request.POST)
 
 		if form.is_valid():
-			######
 			title = form.cleaned_data['title']
 			date = form.cleaned_data['date']
 			description = form.cleaned_data['description']
@@ -99,16 +99,18 @@ def add(request):
 				address = address	
 			).save()			
 			
-			return HttpResponeRedirect('/news')
+			return HttpResponseRedirect('/news')
 	else:
 		form = EntryForms()	
 
 	return render(request, 'app/news/form.html', {'form': form})
 
-def delete(request, pk):
+def delete(request, id):
 
-	if request.method == 'DELETE':
-		new = get_object_or_404(News, pk=pk)
-		new.delete()
-
-	return HttpResponseRedirect('/news')
+	news = News.objects.get(id=id)
+	
+	if request.method == 'POST':
+		news.delete()
+		return HttpResponseRedirect('/news')
+	
+	return render(request,'app/news/delete.html',{'news': news})

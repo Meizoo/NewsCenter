@@ -6,5 +6,5 @@
 		 {{ new.description|truncatechars:50 }}
 	</p>		
 	<button onclick="window.location='{% url 'details' pk=new.id %}'" type="button"	class="btn btn-primary">View Details</button>
-	<button data-id="{{ new.id }}" onclick="deleteNews(this)" type="button"	class="btn btn-primary">Delete</button>
+	<button onclick="window.location='{% url 'delete'  id=new.id %}'" type="button"	class="btn btn-primary">Delete</button>
 </div>

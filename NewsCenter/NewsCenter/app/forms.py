@@ -22,4 +22,3 @@ class EntryForms(forms.Form):
 	date = forms.DateTimeField()
 	description = forms.CharField(widget = forms.Textarea)
 	address = forms.CharField(max_length = 32)
-

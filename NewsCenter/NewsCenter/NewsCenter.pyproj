@@ -37,6 +37,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\forms.py" />
+    <Compile Include="app\listviews.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\models.py" />
     <Compile Include="app\tests.py" />
     <Compile Include="app\views.py" />
@@ -69,7 +72,7 @@
     <Content Include="app\static\app\content\layout.css" />
     <Content Include="app\static\app\scripts\calendar.js" />
     <Content Include="app\templates\admin\base_site.html" />
-    <Content Include="app\templates\app\news\calendar.html" />
+    <Content Include="app\templates\app\news\article.html" />
     <Content Include="app\templates\app\news\details.html" />
     <Content Include="app\templates\app\news\form.html" />
     <Content Include="app\templates\app\users.html" />

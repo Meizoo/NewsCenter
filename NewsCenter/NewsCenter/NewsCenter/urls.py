@@ -13,23 +13,18 @@ import django.contrib.auth.views
 import app.forms
 import app.views
 
+from app.views import *
+
 admin.autodiscover()
 
 #newspatterns = [url()]
 
 urlpatterns = [
-	path(''                , app.views.home         , name='home'    ),
-	path('contact'         , app.views.contact      , name='contact' ),
-	path('about'           , app.views.about        , name='about'   ),
-	path('news'            , app.views.articles     , name='news'    ),
-	path('users'           , app.views.users        , name='users'   ),
-	path('comments'        , app.views.comments     , name='comments'),
-	path('details/<int:pk>', app.views.details      , name='details' ),
-	path('add'             , app.views.add          , name='add'     ),
-	path('delete/<int:id>' , app.views.delete       , name='delete'  ),
-	path('update/<int:id>' , app.views.update       , name='update'  ),
+	path(''                , app.views.default.home         , name='home'    ),
+	path('contact'         , app.views.default.contact      , name='contact' ),
+	path('about'           , app.views.default.about        , name='about'   ),
 	path('register/'       ,
-		app.views.register ,
+		app.views.default.register ,
 		{
 			'template_name': 'app/home/register.html',
 			'authentication_form': app.forms.BootstrapAuthenticationForm,
@@ -40,6 +35,16 @@ urlpatterns = [
 			}
 		},
 		name='register'),
+
+	path('users'           , app.views.other.users        , name='users'   ),
+	path('comments'        , app.views.other.comments     , name='comments'),
+
+	path('news'            , app.views.article.articles     , name='news'    ),
+	path('details/<int:pk>', app.views.article.details      , name='details' ),
+	path('add'             , app.views.article.add          , name='add'     ),
+	path('delete/<int:id>' , app.views.article.delete       , name='delete'  ),
+	path('update/<int:id>' , app.views.article.update       , name='update'  ),
+
 	path('login',
 		django.contrib.auth.views.login,
 		{
@@ -60,4 +65,5 @@ urlpatterns = [
 		name='logout'),
 
 	path('admin/doc/', include('django.contrib.admindocs.urls')),
-	path('admin', admin.site.urls),]
+	path('admin', admin.site.urls),
+]

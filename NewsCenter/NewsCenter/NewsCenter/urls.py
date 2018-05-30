@@ -8,14 +8,15 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 from app import views
-
-import django.contrib.auth.views
-import app.forms
-import app.views
-
 from app.views import default
 from app.views import article
 from app.views import other
+
+from app.views import *
+
+import django.contrib.auth.views
+import app.forms
+
 
 admin.autodiscover()
 

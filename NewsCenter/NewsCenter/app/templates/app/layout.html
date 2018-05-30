@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ title }}</title>
 	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'app/content/layout.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css'      %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css'               %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'app/content/layout.css'             %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap_override.css' %}" />
 	<script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
@@ -21,17 +21,16 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="/" class="navbar-brand">NewsCenter (nazwa_robocza)</a>
+				<a href="/" class="navbar-brand">NewsCenter (tmp)</a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="{% if title == 'Home' %}blue-activegradient{% endif %}"><a href="{% url 'home' %}">Home</a></li>
-					<li class="{% if title == 'About' %}blue-activegradient{% endif %}"><a href="{% url 'about' %}">About</a></li>
-					<li class="{% if title == 'Contact' %}blue-activegradient{% endif %}"><a href="{% url 'contact' %}">Contact</a></li>
-					<li class="{% if title == 'News' %}blue-activegradient{% endif %}"><a href="{% url 'news' %}">News</a></li>
-                    <li class="{% if title == 'Users' %}blue-activegradient{% endif %}"><a href="{% url 'users' %}">Users</a></li>
-                    <li class="{% if title == 'Comments' %}blue-activegradient{% endif %}"><a href="{% url 'comments' %}">Comments</a></li>
-
+					<li class="{% if title == 'Home'     %} blue-activegradient {% endif %}"><a href="{% url 'home'     %} "> Home     </a></li>
+					<li class="{% if title == 'About'    %} blue-activegradient {% endif %}"><a href="{% url 'about'    %} "> About    </a></li>
+					<li class="{% if title == 'Contact'  %} blue-activegradient {% endif %}"><a href="{% url 'contact'  %} "> Contact  </a></li>
+					<li class="{% if title == 'News'     %} blue-activegradient {% endif %}"><a href="{% url 'news'     %} "> News     </a></li>
+                    <li class="{% if title == 'Users'    %} blue-activegradient {% endif %}"><a href="{% url 'users'    %} "> Users    </a></li>
+                    <li class="{% if title == 'Comments' %} blue-activegradient {% endif %}"><a href="{% url 'comments' %} "> Comments </a></li>
 				</ul>
 				{% include 'app/home/loginpartial.html' %}
 			</div>
@@ -39,7 +38,10 @@
 	</div>
 
 	<div class="container body-content">
-{% block content %}{% endblock %}
+	
+		{% block content %}
+		{% endblock %}
+
 		<hr/>
 		<footer class="footer">
 			<p>&copy; {{ year }} </p>
@@ -51,7 +53,9 @@
 	<script src="{% static 'app/scripts/respond.js' %}"></script>
 	<script src="{% static 'app/scripts/calendar.js' %}"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-{% block scripts %}{% endblock %}
+
+{% block scripts %}
+{% endblock %}
 
 </body>
 </html>

@@ -17,17 +17,18 @@ admin.autodiscover()
 
 #newspatterns = [url()]
 
-urlpatterns = [path('', app.views.home, name='home'),
-    path('contact', app.views.contact, name='contact'),
-    path('about', app.views.about, name='about'),
-    path('news', app.views.show_news, name='news'),
-    path('users', app.views.show_users, name='users'),
-    path('comments', app.views.show_comments, name='comments'),
-	path('details/<int:pk>', app.views.details, name='details'),
-	path('add', app.views.add, name='add'),
-	path('delete/<int:pk>', app.views.delete, name='delete'),
-    path('register/',
-		app.views.register,
+urlpatterns = [
+	path(''                , app.views.home         , name='home'    ),
+	path('contact'         , app.views.contact      , name='contact' ),
+	path('about'           , app.views.about        , name='about'   ),
+	path('news'            , app.views.articles     , name='news'    ),
+	path('users'           , app.views.users        , name='users'   ),
+	path('comments'        , app.views.comments     , name='comments'),
+	path('details/<int:pk>', app.views.details      , name='details' ),
+	path('add'             , app.views.add          , name='add'     ),
+	path('delete/<int:pk>' , app.views.delete       , name='delete'  ),
+	path('register/'       ,
+		app.views.register ,
 		{
 			'template_name': 'app/home/register.html',
 			'authentication_form': app.forms.BootstrapAuthenticationForm,

@@ -18,7 +18,8 @@ class BootstrapAuthenticationForm(AuthenticationForm):
 									'placeholder':'Password'}))
 
 class EntryForms(forms.Form):
-	title = forms.CharField(max_length=32)
-	date = forms.DateTimeField()
+	title       = forms.CharField(max_length=32)
+	date        = forms.DateTimeField()
 	description = forms.CharField(widget = forms.Textarea)
-	address = forms.CharField(max_length = 32)
+	address     = forms.CharField(max_length = 32)
+

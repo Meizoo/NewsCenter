@@ -1,3 +1,3 @@
 """
-Package for NewsCenter.
+	Package for NewsCenter.
 """

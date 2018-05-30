@@ -1,0 +1,35 @@
+﻿{% extends 'app/layout.html'%}
+
+{% block content %}
+<div class="container form-group">
+	<br />
+	<div class="row">
+		<div >
+			<h1>Edit News</h1>
+		</div>
+		<div >
+			<button onclick="window.location='{% url 'news' %}'" type="button" class="btn btn-primary">Back</button>
+		</div>
+	</div>
+</div>
+
+<div class="container form-group">
+	<form action="/update/{{ news.id }}" method="post">
+		{% csrf_token %} 
+			<label for="title">Title: <input type="text" name="title" id="title" value="{{ news.title }}"
+			placeholder=" {{ news.title }}"/>
+			</label>
+			<label for="date">Date: <input type="date" name="date" id="date" value="{{ news.date }}"
+			placeholder=" {{ news.date }}"/>
+			</label>
+			<label for="description">Description: <input type="text" name="description" id="descrpition" value="{{ news.description}}"
+			placeholder=" {{ news.description }}"/>
+			</label>
+			<label for="address">Address: <input type="text" name="address" id="address" value="{{ news.address}}"
+			placeholder=" {{ news.address}}"/>
+			</label>
+			<br />
+	<button type="submit" class="btn btn-primary">Confirm</button>
+	</form>
+</div>
+{% endblock %}

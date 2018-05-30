@@ -27,7 +27,7 @@ urlpatterns = [
 	path('details/<int:pk>', app.views.details      , name='details' ),
 	path('add'             , app.views.add          , name='add'     ),
 	path('delete/<int:id>' , app.views.delete       , name='delete'  ),
-	path('update/<int:id>' , app.views.update       , name='update'  ),
+	path('edit/<int:id>' , app.views.edit       , name='edit'  ),
 	path('register/'       ,
 		app.views.register ,
 		{

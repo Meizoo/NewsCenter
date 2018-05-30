@@ -112,6 +112,24 @@ def delete(request, id):
 	
 	return render(request,'app/news/delete.html',{'news': news})
 
+def edit(request, id):
+	news = News.objects.get(id=id)
+	return render(request,'app/news/edit.html', {'news': news})
+
+def update(request, id):
+	
+	news = News.objects.get(id=id)
+
+	if request.method == 'POST':
+		news.title = request.POST['title'];
+		news.title = request.POST['date'];
+		news.title = request.POST['description'];
+		news.title = request.POST['address'];
+		news.save()
+		return HttpResponseRedirect('/news')
+
+	return render(request, 'app/news/upgrade.html', {'news': news})
+
 # Other
 def users(request):
 	"""Renders the users"""

@@ -77,7 +77,7 @@
     <Content Include="app\templates\app\news\delete.html" />
     <Content Include="app\templates\app\news\details.html" />
     <Content Include="app\templates\app\news\create.html" />
-    <Content Include="app\templates\app\news\update.html" />
+    <Content Include="app\templates\app\news\edit.html" />
     <Content Include="app\templates\app\users\index.html" />
     <Content Include="app\templates\app\comments.html" />
     <Content Include="app\templates\app\news\index.html" />

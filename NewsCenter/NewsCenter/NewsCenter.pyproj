@@ -81,11 +81,12 @@
     <Content Include="app\static\app\content\bootstrap_calendar.css" />
     <Content Include="app\static\app\content\bootstrap_override.css" />
     <Content Include="app\static\app\content\layout.css" />
-    <Content Include="app\static\app\scripts\calendar.js" />
     <Content Include="app\templates\admin\base_site.html" />
     <Content Include="app\templates\app\news\articlepartial.html" />
+    <Content Include="app\templates\app\news\delete.html" />
     <Content Include="app\templates\app\news\details.html" />
     <Content Include="app\templates\app\news\create.html" />
+    <Content Include="app\templates\app\news\update.html" />
     <Content Include="app\templates\app\users\index.html" />
     <Content Include="app\templates\app\comments.html" />
     <Content Include="app\templates\app\news\index.html" />

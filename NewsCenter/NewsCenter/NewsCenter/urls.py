@@ -1,5 +1,5 @@
 """
-Definition of urls for NewsCenter.
+	Definition of urls for NewsCenter.
 """
 
 from datetime import datetime

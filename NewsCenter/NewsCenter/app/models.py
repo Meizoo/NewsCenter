@@ -57,11 +57,11 @@ class Comment(models.Model):
 		return f'{self.id_user} comment'
 
 class CommentNews(models.Model):
-	id_comment = models.ForeignKey(Comment, on_delete=models.PROTECT)
-	id_news    = models.ForeignKey(News, on_delete=models.PROTECT)
+	id_comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+	id_news    = models.ForeignKey(News, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return f'{self.id_user} commented to {self.id_news}'
+		return f'{self.id_comment} commented to {self.id_news}'
 
 	class Meta:
 		verbose_name_plural = 'CommentNews'

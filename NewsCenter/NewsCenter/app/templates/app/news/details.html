@@ -13,6 +13,10 @@
 
 	<button onclick="window.location='{% url 'news' %}'" class="btn btn-primary">Back to News</button>
 
-	
+	<button type="submit" class="btn btn-primary">Add comment</button>
+
+	{% for c in comments %}
+		{{ c.comment }}
+	{% endfor %}
 
 {% endblock %}

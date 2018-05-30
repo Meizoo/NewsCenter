@@ -23,7 +23,10 @@ def articles(request):
 
 def details(request, pk):
 	"""Renders the article's details"""
-	return render(request, 'app/news/details.html', {'new': News.objects.get(id=pk)})
+	return render(request, 'app/news/details.html', {
+		'new': News.objects.get(id=pk), 
+		'comments' : Comment.objects.filter(pk=pk)
+	})
 
 def add(request):
 	"""Adds article"""

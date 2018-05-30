@@ -20,10 +20,10 @@ admin.autodiscover()
 #newspatterns = [url()]
 
 urlpatterns = [
-	path(''                , app.views.default.home         , name='home'    ),
-	path('contact'         , app.views.default.contact      , name='contact' ),
-	path('about'           , app.views.default.about        , name='about'   ),
-	path('register/'       ,
+	path(''         , app.views.default.home    , name='home'    ),
+	path('contact'  , app.views.default.contact , name='contact' ),
+	path('about'    , app.views.default.about   , name='about'   ),
+	path('register/',
 		app.views.default.register ,
 		{
 			'template_name': 'app/home/register.html',
@@ -36,14 +36,14 @@ urlpatterns = [
 		},
 		name='register'),
 
-	path('users'           , app.views.other.users        , name='users'   ),
-	path('comments'        , app.views.other.comments     , name='comments'),
+	path('users'           , app.views.other.users    , name='users'   ),
+	path('comments'        , app.views.other.comments , name='comments'),
 
-	path('news'            , app.views.article.articles     , name='news'    ),
-	path('details/<int:pk>', app.views.article.details      , name='details' ),
-	path('add'             , app.views.article.add          , name='add'     ),
-	path('delete/<int:id>' , app.views.article.delete       , name='delete'  ),
-	path('update/<int:id>' , app.views.article.update       , name='update'  ),
+	path('news'            , app.views.article.articles , name='news'    ),
+	path('details/<int:pk>', app.views.article.details  , name='details' ),
+	path('add'             , app.views.article.add      , name='add'     ),
+	path('delete/<int:id>' , app.views.article.delete   , name='delete'  ),
+	path('update/<int:id>' , app.views.article.update   , name='update'  ),
 
 	path('login',
 		django.contrib.auth.views.login,

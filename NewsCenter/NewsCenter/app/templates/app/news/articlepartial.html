@@ -14,6 +14,6 @@
 	View Details
 </button>
 
-<button data-id="{{ j.id }}" onclick="deletejs(this)" type="button"	class="btn btn-primary">
+<button onclick="window.location='{% url 'delete'  id=j.id %}'" type="button" class="btn btn-primary">
 	Delete
 </button>

@@ -89,7 +89,6 @@ def add(request):
 			date = form.cleaned_data['date']
 			description = form.cleaned_data['description']
 			address = form.cleaned_data['address']
-			
 			News.objects.create(
 				title = title, 
 				date = date, 

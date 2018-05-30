@@ -8,12 +8,15 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 from app import views
+from app.views import default
+from app.views import article
+from app.views import other
+
+from app.views import *
 
 import django.contrib.auth.views
 import app.forms
-import app.views
 
-from app.views import *
 
 admin.autodiscover()
 
@@ -44,7 +47,7 @@ urlpatterns = [
 	path('add'             , app.views.article.add      , name='add'     ),
 	path('delete/<int:id>' , app.views.article.delete   , name='delete'  ),
 	path('update/<int:id>' , app.views.article.update   , name='update'  ),
-	path('edit/<int:id>'   , app.views.edit				, name='edit'	 ),
+	path('edit/<int:id>'   , app.views.article.edit				, name='edit'	 ),
 	
 	path('login',
 		django.contrib.auth.views.login,

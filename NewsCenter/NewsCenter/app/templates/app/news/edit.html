@@ -16,16 +16,18 @@
 <div class="container form-group">
 	<form action="/update/{{ news.id }}" method="post">
 		{% csrf_token %} 
-			<label for="title">Title: <input type="text" name="title" id="title" value="{{ news.title }}"
+			<label for="title">Title: <input type="text" name="title" id="title" class="form-control" value="{{ news.title }}"
 			placeholder=" {{ news.title }}"/>
 			</label>
-			<label for="date">Date: <input type="date" name="date" id="date" value="{{ news.date }}"
-			placeholder=" {{ news.date }}"/>
+			<br />
+			<label for="date">Date: <input type="datetime-local" value="{{ news.date|date:"Y-m-d" }}" name="date" onfocus="(this.type='{{ news.date }}')" placeholder="{{ news.date }}" class="form-control" />
 			</label>
-			<label for="description">Description: <input type="text" name="description" id="descrpition" value="{{ news.description}}"
+			<br />
+			<label for="description">Description: <input type="text" name="description" id="descrpition" class="form-control" value="{{ news.description}}"
 			placeholder=" {{ news.description }}"/>
 			</label>
-			<label for="address">Address: <input type="text" name="address" id="address" value="{{ news.address}}"
+			<br />
+			<label for="address">Address: <input type="text" name="address" id="address" class="form-control" value="{{ news.address}}"
 			placeholder=" {{ news.address}}"/>
 			</label>
 			<br />

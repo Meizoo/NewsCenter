@@ -68,9 +68,9 @@ def update(request, id):
 
 	if request.method == 'POST':
 		news.title = request.POST['title'];
-		news.title = request.POST['date'];
-		news.title = request.POST['description'];
-		news.title = request.POST['address'];
+		news.date = request.POST['date'];
+		news.description = request.POST['description'];
+		news.address = request.POST['address'];
 		news.save()
 		return HttpResponseRedirect('/news')
 

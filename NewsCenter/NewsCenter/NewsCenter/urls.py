@@ -1,5 +1,5 @@
 """
-Definition of urls for NewsCenter.
+	Definition of urls for NewsCenter.
 """
 
 from datetime import datetime
@@ -13,7 +13,9 @@ import django.contrib.auth.views
 import app.forms
 import app.views
 
-from app.views import *
+from app.views import default
+from app.views import article
+from app.views import other
 
 admin.autodiscover()
 
@@ -44,7 +46,7 @@ urlpatterns = [
 	path('add'             , app.views.article.add      , name='add'     ),
 	path('delete/<int:id>' , app.views.article.delete   , name='delete'  ),
 	path('update/<int:id>' , app.views.article.update   , name='update'  ),
-	path('edit/<int:id>'   , app.views.edit				, name='edit'	 ),
+	path('edit/<int:id>'   , app.views.article.edit				, name='edit'	 ),
 	
 	path('login',
 		django.contrib.auth.views.login,

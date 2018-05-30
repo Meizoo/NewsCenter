@@ -25,10 +25,11 @@ urlpatterns = [path('', app.views.home, name='home'),
     path('comments', app.views.show_comments, name='comments'),
 	path('details/<int:pk>', app.views.details, name='details'),
 	path('add', app.views.add, name='add'),
+	path('delete/<int:pk>', app.views.delete, name='delete'),
     path('register/',
 		app.views.register,
 		{
-			'template_name': 'app/register.html',
+			'template_name': 'app/home/register.html',
 			'authentication_form': app.forms.BootstrapAuthenticationForm,
 			'extra_context':
 			{
@@ -40,7 +41,7 @@ urlpatterns = [path('', app.views.home, name='home'),
 	path('login',
 		django.contrib.auth.views.login,
 		{
-			'template_name': 'app/login.html',
+			'template_name': 'app/home/login.html',
 			'authentication_form': app.forms.BootstrapAuthenticationForm,
 			'extra_context':
 			{

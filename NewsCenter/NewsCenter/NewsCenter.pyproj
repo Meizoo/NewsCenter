@@ -59,20 +59,23 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="app\templates\admin\" />
+    <Folder Include="app\templates\app\home\" />
+    <Folder Include="app\templates\app\news\" />
     <Folder Include="NewsCenter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\static\app\content\bootstrap_calendar.css" />
     <Content Include="app\static\app\content\bootstrap_override.css" />
     <Content Include="app\static\app\content\layout.css" />
+    <Content Include="app\static\app\scripts\calendar.js" />
     <Content Include="app\templates\admin\base_site.html" />
-    <Content Include="app\templates\app\calendar.html" />
-    <Content Include="app\templates\app\details.html" />
-    <Content Include="app\templates\app\form.html" />
+    <Content Include="app\templates\app\news\calendar.html" />
+    <Content Include="app\templates\app\news\details.html" />
+    <Content Include="app\templates\app\news\form.html" />
     <Content Include="app\templates\app\users.html" />
     <Content Include="app\templates\app\comments.html" />
-    <Content Include="app\templates\app\news.html" />
-    <Content Include="app\templates\app\register.html" />
+    <Content Include="app\templates\app\news\news.html" />
+    <Content Include="app\templates\app\home\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -97,12 +100,12 @@
     <Content Include="app\static\app\scripts\respond.js" />
     <Content Include="app\static\app\scripts\respond.min.js" />
     <Content Include="app\static\app\scripts\_references.js" />
-    <Content Include="app\templates\app\about.html" />
-    <Content Include="app\templates\app\contact.html" />
-    <Content Include="app\templates\app\index.html" />
+    <Content Include="app\templates\app\home\about.html" />
+    <Content Include="app\templates\app\home\contact.html" />
+    <Content Include="app\templates\app\home\index.html" />
     <Content Include="app\templates\app\layout.html" />
-    <Content Include="app\templates\app\login.html" />
-    <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="app\templates\app\home\login.html" />
+    <Content Include="app\templates\app\home\loginpartial.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

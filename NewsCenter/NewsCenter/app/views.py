@@ -18,7 +18,7 @@ def home(request):
 	assert isinstance(request, HttpRequest)
 	return render(
 		request,
-		'app/index.html',
+		'app/home/index.html',
 		{
 			'title':'Home',
 			'year':datetime.now().year,
@@ -30,7 +30,7 @@ def contact(request):
 	assert isinstance(request, HttpRequest)
 	return render(
 		request,
-		'app/contact.html',
+		'app/home/contact.html',
 		{
 			'title':'Contact',
 			'message':'Contact page',
@@ -43,7 +43,7 @@ def about(request):
 	assert isinstance(request, HttpRequest)
 	return render(
 		request,
-		'app/about.html',
+		'app/home/about.html',
 		{
 			'title':'About',
 			'message':'Project description',
@@ -56,7 +56,7 @@ def register(request, template_name, authentication_form, extra_context):
 	assert isinstance(request, HttpRequest)
 	return render(
 		request,
-		'app/register.html',
+		'app/home/register.html',
 		{
 			'title':'Register',
 			'message':'User registration',
@@ -66,7 +66,7 @@ def register(request, template_name, authentication_form, extra_context):
 
 def show_news(request):
     news = News.objects.all()
-    return render(request, 'app/news.html', {'news': news})
+    return render(request, 'app/news/news.html', {'news': news})
 
 def show_users(request):
     users = User.objects.all()
@@ -78,7 +78,7 @@ def show_comments(request):
 
 def details(request, pk):
 	new = News.objects.get(id=pk)
-	return render(request, 'app/details.html', {'new': new})
+	return render(request, 'app/news/details.html', {'new': new})
 
 def add(request):
 
@@ -101,6 +101,14 @@ def add(request):
 			
 			return HttpResponeRedirect('/news')
 	else:
-		form = EntryForms()
+		form = EntryForms()	
 
-	return render(request, 'app/form.html', {'form': form})
+	return render(request, 'app/news/form.html', {'form': form})
+
+def delete(request, pk):
+
+	if request.method == 'DELETE':
+		new = get_object_or_404(News, pk=pk)
+		new.delete()
+
+	return HttpResponseRedirect('/news')

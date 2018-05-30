@@ -1,0 +1,27 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>Calendar</h2>	
+
+	<br />
+		<div class="row">
+			<div class="col-sm-3">
+				<button onclick="window.location='{% url 'add' %}'" type="button" class="btn btn-primary">Add news</button>
+			</div>
+		</div>
+	<hr />
+
+<table class="table">
+	{% for i in news.querytable %}
+		<tr>
+			{% for j in i %}
+				<th>
+					{% include 'app/news/articlepartial.html' %}
+				</th>	
+			{% endfor %}
+		</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

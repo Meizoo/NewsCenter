@@ -3,17 +3,22 @@ Definition of views.
 """
 
 from django.shortcuts import render,render_to_response,get_object_or_404
+from app import forms
 from django.http import HttpRequest,Http404,HttpResponseRedirect
 from django.template import RequestContext
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
 from django.contrib import messages
 from app.calendar_pattern import *
+
 from datetime import datetime, date
 from calendar import HTMLCalendar
 from .models import *
 from .forms import EntryForms
 
+from .listviews import ArticleListView
+
+# Home handlers
 def home(request):
 	"""Renders the home page."""
 	assert isinstance(request, HttpRequest)
@@ -65,24 +70,17 @@ def register(request, template_name, authentication_form, extra_context):
 		}
 	)
 
-def show_news(request):
-    news = News.objects.all()
-    return render(request, 'app/news/news.html', {'news': news})
-
-def show_users(request):
-    users = User.objects.all()
-    return render(request, 'app/users.html', {'users': users})
-
-def show_comments(request):
-    comments = Comment.objects.all()
-    return render(request, 'app/comments.html', {'comments': comments})
+# News handlers
+def articles(request):
+	"""Renders the articles"""
+	return render(request, 'app/news/index.html', {'news': ArticleListView})
 
 def details(request, pk):
-	new = News.objects.get(id=pk)
-	return render(request, 'app/news/details.html', {'new': new})
+	"""Renders the article's details"""
+	return render(request, 'app/news/details.html', {'new': News.objects.get(id=pk)})
 
 def add(request):
-
+	"""Adds article"""
 	if request.method == 'POST':
 		form = EntryForms(request.POST)
 
@@ -103,7 +101,7 @@ def add(request):
 	else:
 		form = EntryForms()	
 
-	return render(request, 'app/news/form.html', {'form': form})
+	return render(request, 'app/news/create.html', {'form': form})
 
 def delete(request, id):
 
@@ -114,3 +112,12 @@ def delete(request, id):
 		return HttpResponseRedirect('/news')
 	
 	return render(request,'app/news/delete.html',{'news': news})
+
+# Other
+def users(request):
+	"""Renders the users"""
+	return render(request, 'app/users/index.html', {'users': User.objects.all()})
+
+def comments(request):
+	"""Renders all of the comments"""
+	return render(request, 'app/comments.html', {'comments': Comment.objects.all()})

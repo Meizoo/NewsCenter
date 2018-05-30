@@ -1,13 +1,16 @@
 ﻿{% extends "app/layout.html" %}
 
 {% block content %}
-<div class="container jumbotron">
+
     <h1> Tytuł: {{new.title}} </h1>
 	<hr />
-	<h5> Data rozpoczęcia: {{new.date|date:"Y m d D"}} </h5>
+	
+<h5> Data rozpoczęcia: {{new.date|date:"Y m d D"}} </h5>
+
 	<p>  Opis: {{new.description}} </p>
-	<br /> 
+	
+<br>
+
 	<button onclick="window.location='{% url 'news' %}'" class="btn btn-primary">Back to News</button>
-</div>
 
 {% endblock %}

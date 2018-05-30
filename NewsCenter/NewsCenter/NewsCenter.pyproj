@@ -90,7 +90,7 @@
     <Content Include="app\templates\app\users\index.html" />
     <Content Include="app\templates\app\comments.html" />
     <Content Include="app\templates\app\news\index.html" />
-    <Content Include="app\templates\app\home\register.html" />
+    <Content Include="app\templates\app\users\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -119,8 +119,8 @@
     <Content Include="app\templates\app\home\contact.html" />
     <Content Include="app\templates\app\home\index.html" />
     <Content Include="app\templates\app\layout.html" />
-    <Content Include="app\templates\app\home\login.html" />
-    <Content Include="app\templates\app\home\loginpartial.html" />
+    <Content Include="app\templates\app\users\login.html" />
+    <Content Include="app\templates\app\users\loginpartial.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

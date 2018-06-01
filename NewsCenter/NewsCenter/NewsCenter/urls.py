@@ -37,6 +37,10 @@ urlpatterns = [
 			}
 		},
 		name='register'),
+	 url(r'^signup/$', app.views.user.signup, name='signup'),
+     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        app.views.user.activate, name='activate'),
+
 	path('login',
 		django.contrib.auth.views.login,
 		{

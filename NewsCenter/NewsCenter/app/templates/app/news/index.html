@@ -1,4 +1,4 @@
-﻿{% extends "app/layout.html" %}
+﻿{% extends "app/shared/layout.html" %}
 
 {% block content %}
 
@@ -17,7 +17,7 @@
 		<tr>
 			{% for j in i %}
 				<th>
-					{% include 'app/news/articlepartial.html' %}
+					{% include 'app/partial/articlepartial.html' %}
 				</th>	
 			{% endfor %}
 		</tr>

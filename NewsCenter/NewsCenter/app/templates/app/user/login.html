@@ -1,4 +1,4 @@
-{% extends "app/layout.html" %}
+{% extends "app/shared/layout.html" %}
 
 {% block content %}
 
@@ -8,18 +8,12 @@
 		<section id="loginForm">
 			<form action="." method="post" class="form-horizontal">
 				{% csrf_token %}
-				<h4>(TEMPORARY)</h4>
+				<h4>Use a local account to log in.</h4>
 				<hr />
 				<div class="form-group">
 					<label for="id_username" class="col-lg-2 control-label">User name</label>
 					<div class="col-lg-10">
 						{{ form.username }}
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="id_email" class="col-lg-2 control-label">E-mail</label>
-					<div class="col-lg-10">
-						{{ form.email }}
 					</div>
 				</div>
 				<div class="form-group">
@@ -29,19 +23,15 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="id_confirm_password" class="col-lg-2 control-label">Confirm password</label>
-					<div class="col-lg-10">
-						{{ form.confirm_password }}
-					</div>
-				</div>
-				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
 						<input type="hidden" name="next" value="/" />
-						<input type="submit" value="Register" class="btn btn-default" />
+						<input type="submit" value="Log in" class="btn btn-default" />
 					</div>
 				</div>
 				{% if form.errors %}
-				<p class="validation-summary-errors">Please enter a correct credentials.</p>
+					<p class="validation-summary-errors">
+						Please enter a correct user name and password.
+					</p>
 				{% endif %}
 			</form>
 		</section>
@@ -56,7 +46,7 @@
 
 {% block scripts %}
 
-	{% load staticfiles %}
+{% load staticfiles %}
 <script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
 
 {% endblock %}

@@ -1,5 +1,5 @@
 """
-	Definition of home views.
+	Definition of user views
 """
 
 from django.shortcuts import render,render_to_response,get_object_or_404
@@ -17,39 +17,19 @@ from ..models import *
 from ..forms import EntryForms
 
 def index(request):
-	"""Renders the home page."""
+	"""Renders the users"""
+	return render(request, 'app/user/index.html', {'users': User.objects.all()})
+
+def register(request, template_name, authentication_form, extra_context):
+	"""Renders the register page."""
 	assert isinstance(request, HttpRequest)
 	return render(
 		request,
-		'app/home/index.html',
+		'app/user/register.html',
 		{
-			'title':'Home',
+			'title':'Register',
+			'message':'User registration',
 			'year':datetime.now().year,
 		}
 	)
 
-def contact(request):
-	"""Renders the contact page."""
-	assert isinstance(request, HttpRequest)
-	return render(
-		request,
-		'app/home/contact.html',
-		{
-			'title':'Contact',
-			'message':'Contact page',
-			'year':datetime.now().year,
-		}
-	)
-
-def about(request):
-	"""Renders the about page."""
-	assert isinstance(request, HttpRequest)
-	return render(
-		request,
-		'app/home/about.html',
-		{
-			'title':'About',
-			'message':'Project description',
-			'year':datetime.now().year,
-		}
-	)

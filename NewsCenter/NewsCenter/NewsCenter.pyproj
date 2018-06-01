@@ -49,6 +49,9 @@
     <Compile Include="app\views\default.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\views\user.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\views\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -72,7 +75,9 @@
     <Folder Include="app\templates\app\" />
     <Folder Include="app\templates\admin\" />
     <Folder Include="app\templates\app\home\" />
-    <Folder Include="app\templates\app\users\" />
+    <Folder Include="app\templates\app\partial\" />
+    <Folder Include="app\templates\app\shared\" />
+    <Folder Include="app\templates\app\user\" />
     <Folder Include="app\templates\app\news\" />
     <Folder Include="app\views\" />
     <Folder Include="NewsCenter\" />
@@ -82,15 +87,15 @@
     <Content Include="app\static\app\content\bootstrap_override.css" />
     <Content Include="app\static\app\content\layout.css" />
     <Content Include="app\templates\admin\base_site.html" />
-    <Content Include="app\templates\app\news\articlepartial.html" />
+    <Content Include="app\templates\app\partial\articlepartial.html" />
     <Content Include="app\templates\app\news\delete.html" />
     <Content Include="app\templates\app\news\details.html" />
     <Content Include="app\templates\app\news\create.html" />
     <Content Include="app\templates\app\news\edit.html" />
-    <Content Include="app\templates\app\users\index.html" />
+    <Content Include="app\templates\app\user\index.html" />
     <Content Include="app\templates\app\comments.html" />
     <Content Include="app\templates\app\news\index.html" />
-    <Content Include="app\templates\app\users\register.html" />
+    <Content Include="app\templates\app\user\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -118,9 +123,9 @@
     <Content Include="app\templates\app\home\about.html" />
     <Content Include="app\templates\app\home\contact.html" />
     <Content Include="app\templates\app\home\index.html" />
-    <Content Include="app\templates\app\layout.html" />
-    <Content Include="app\templates\app\users\login.html" />
-    <Content Include="app\templates\app\users\loginpartial.html" />
+    <Content Include="app\templates\app\shared\layout.html" />
+    <Content Include="app\templates\app\user\login.html" />
+    <Content Include="app\templates\app\partial\loginpartial.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

@@ -23,3 +23,6 @@ class EntryForms(forms.Form):
 	description = forms.CharField(widget = forms.Textarea)
 	address     = forms.CharField(max_length = 32)
 
+class CommentForms(forms.Form):
+	comment = forms.CharField(max_length=128)
+

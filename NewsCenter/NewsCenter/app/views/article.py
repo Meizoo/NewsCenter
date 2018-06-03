@@ -2,6 +2,8 @@ from django.shortcuts import render,render_to_response,get_object_or_404
 
 from app import models, forms
 
+from django.contrib.auth.models import User
+
 from django.http             import HttpRequest,Http404,HttpResponseRedirect
 from django.template         import RequestContext
 from django.utils.safestring import mark_safe
@@ -14,7 +16,7 @@ from calendar import HTMLCalendar
 from app.calendar_pattern import *
 
 from ..models    import *
-from ..forms     import EntryForms
+from ..forms     import EntryForms, CommentForms
 from ..listviews import ArticleListView
 
 # News handlers
@@ -24,9 +26,26 @@ def index(request):
 
 def details(request, pk):
 	"""Renders the article's details"""
+	if request.method == 'POST':
+		form = CommentForms(request.POST)
+
+		if form.is_valid():
+			comment = Comment.objects.create(
+				comment = form.cleaned_data['comment'], 
+				id_user = User.objects.get(id=request.user.id)
+			)
+			CommentNews.objects.create(
+				id_comment = comment,
+				id_news = News.objects.get(id=pk)
+			).save()
+			comment.save()
+			return HttpResponseRedirect('/news')
+	else:
+		form = EntryForms()	
+
 	return render(request, 'app/news/details.html', {
 		'new': News.objects.get(id=pk), 
-		'comments' : Comment.objects.filter(pk=pk)
+		'comments' : Comment.objects.filter(id__in=CommentNews.objects.filter(id_news=pk).values_list('id_comment', flat=True))
 	})
 
 def add(request):

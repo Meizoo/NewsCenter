@@ -14,11 +14,11 @@ STATE = (
 	)
 
 class News(models.Model):
-	title       = models.CharField(max_length = 32)
-	date        = models.DateTimeField()
+	title	   = models.CharField(max_length = 32)
+	date		= models.DateTimeField()
 	description = models.TextField()
-	address     = models.CharField(max_length = 32)
-	created     = models.DateTimeField(auto_now_add=True)
+	address	 = models.CharField(max_length = 32)
+	created	 = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
 		return f'{self.title} {self.date}'
@@ -27,9 +27,9 @@ class News(models.Model):
 		verbose_name_plural = 'News'
 
 class User(models.Model):
-	name    = models.CharField(max_length=64)
+	name	= models.CharField(max_length=64)
 	surname = models.CharField(max_length=128)
-	age     = models.IntegerField()
+	age	 = models.IntegerField()
 	state   = models.IntegerField(choices=STATE)
 	
 	def __str__(self):
@@ -58,7 +58,7 @@ class Comment(models.Model):
 
 class CommentNews(models.Model):
 	id_comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
-	id_news    = models.ForeignKey(News, on_delete=models.CASCADE)
+	id_news	= models.ForeignKey(News, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return f'{self.id_comment} commented to {self.id_news}'
@@ -67,7 +67,7 @@ class CommentNews(models.Model):
 		verbose_name_plural = 'CommentNews'
 
 class Association(models.Model):
-	name    = models.CharField(max_length=32)
+	name	= models.CharField(max_length=32)
 	owner   = models.ForeignKey(User, on_delete=models.PROTECT)
 	contact = models.CharField(max_length=32)
 	address = models.CharField(max_length=128)

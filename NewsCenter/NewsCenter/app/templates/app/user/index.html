@@ -2,11 +2,11 @@
 
 {% block content %}
 <h1>Users</h1>
-    {% for user in users %}
-        <b>Nazwa użytkownika: {{ user.name}} </b><br /> 
-        Nazwisko: {{ user.surname }} <br /> 
-        Wiek:{{ user.age }} <br /> 
-        Kim jest: {{ user.state }} <br />
-    {% endfor %}
+	{% for user in users %}
+		<b>Nazwa użytkownika: {{ user.name}} </b><br /> 
+		Nazwisko: {{ user.surname }} <br /> 
+		Wiek:{{ user.age }} <br /> 
+		Kim jest: {{ user.state }} <br />
+	{% endfor %}
 
 {% endblock %}

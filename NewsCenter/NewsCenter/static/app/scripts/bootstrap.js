@@ -51,8 +51,8 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 	var transEndEventNames = {
 	  'WebkitTransition' : 'webkitTransitionEnd'
 	, 'MozTransition'	: 'transitionend'
-	, 'OTransition'	    : 'oTransitionEnd otransitionend'
-	, 'transition'	    : 'transitionend'
+	, 'OTransition'		: 'oTransitionEnd otransitionend'
+	, 'transition'		: 'transitionend'
 	}
 
 	for (var name in transEndEventNames) {

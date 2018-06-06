@@ -8,10 +8,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
 class SignupForm(UserCreationForm):
-    email = forms.EmailField(max_length=200, help_text='Required')
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2')
+	email = forms.EmailField(max_length=200, help_text='Required')
+	class Meta:
+		model = User
+		fields = ('username', 'email', 'password1', 'password2')
 
 class BootstrapAuthenticationForm(AuthenticationForm):
 	"""Authentication form which uses boostrap CSS."""
@@ -25,10 +25,10 @@ class BootstrapAuthenticationForm(AuthenticationForm):
 									'placeholder':'Password'}))
 
 class EntryForms(forms.Form):
-	title       = forms.CharField(max_length=32)
-	date        = forms.DateTimeField()
+	title	   = forms.CharField(max_length=32)
+	date		= forms.DateTimeField()
 	description = forms.CharField(widget = forms.Textarea)
-	address     = forms.CharField(max_length = 32)
+	address	 = forms.CharField(max_length = 32)
 
 class CommentForms(forms.Form):
 	comment = forms.CharField(max_length=128)

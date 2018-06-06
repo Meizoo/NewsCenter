@@ -36,15 +36,15 @@ class User(models.Model):
 		return self.name
 
 class Interested(models.Model):
-	id_user = models.ForeignKey(User, on_delete=models.PROTECT)
-	id_news = models.ForeignKey(News, on_delete=models.PROTECT)
+	id_user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+	id_news = models.ForeignKey(News, null=True, on_delete=models.SET_NULL)
 
 	def __str__(self):
 		return f'{self.id_user} interested to {self.id_news}'
 
 class Declaration(models.Model):
-	id_user = models.ForeignKey(User, on_delete=models.PROTECT)
-	id_news = models.ForeignKey(News, on_delete=models.PROTECT)
+	id_user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+	id_news = models.ForeignKey(News, null=True, on_delete=models.SET_NULL)
 
 	def __str__(self):
 		return f'{self.id_user} declaration to {self.id_news}'

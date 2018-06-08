@@ -37,4 +37,3 @@ class EntryForms(forms.Form):
 
 class CommentForms(forms.Form):
 	comment = forms.CharField(max_length=128)
-

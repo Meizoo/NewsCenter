@@ -5,37 +5,31 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ title }}</title>
 	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css'	  %}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css'			   %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'app/content/layout.css'			 %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap_override.css' %}" />
 	<script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 
-<body id="override" class="body-gradient">
-	<div class="navbar navbar-fixed-top blue-gradient">
-		<div class="container">
+<body id="override"> <!-- body-gradient -->
+	<nav class="navbar"> <!-- blue-gradient -->
+		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a href="/" class="navbar-brand">NewsCenter (tmp)</a>
+				<a class="navbar-brand" href="/">NewsCenter</a>
 			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="{% if title == 'Home'	 %} blue-activegradient {% endif %}"><a href="{% url 'home'	 %} "> Home	 </a></li>
-					<li class="{% if title == 'About'	%} blue-activegradient {% endif %}"><a href="{% url 'about'	%} "> About	</a></li>
-					<li class="{% if title == 'Contact'  %} blue-activegradient {% endif %}"><a href="{% url 'contact'  %} "> Contact  </a></li>
-					<li class="{% if title == 'News'	 %} blue-activegradient {% endif %}"><a href="{% url 'news'	 %} "> News	 </a></li>
-					<li class="{% if title == 'Users'	%} blue-activegradient {% endif %}"><a href="{% url 'user'	 %} "> Users	</a></li>
-					<li class="{% if title == 'Comments' %} blue-activegradient {% endif %}"><a href="{% url 'comments' %} "> Comments </a></li>
-				</ul>
-				{% include 'app/partial/loginpartial.html' %}
-			</div>
+			<ul class="nav navbar-right nav-pills">
+				<li class="{% if title == 'Home'	   %} blue-activegradient {% endif %}"><a href="{% url 'home'	 %} "> Home	     </a></li>
+				<li class="{% if title == 'About'	   %} blue-activegradient {% endif %}"><a href="{% url 'about'	%} "> About	     </a></li>
+				<li class="{% if title == 'Contact'    %} blue-activegradient {% endif %}"><a href="{% url 'contact'  %} "> Contact  </a></li>
+				<li class="{% if title == 'News'	   %} blue-activegradient {% endif %}"><a href="{% url 'news'	 %} "> News	 </a></li>
+				<li class="{% if title == 'Users'	   %} blue-activegradient {% endif %}"><a href="{% url 'user'	 %} "> Users	</a></li>
+				<li class="{% if title == 'Comments'   %} blue-activegradient {% endif %}"><a href="{% url 'comments' %} "> Comments </a></li>
+				<li class="{% if title == 'Organizers' %} blue-activegradient {% endif %}"><a href="{% url 'organizers' %} "> Organizers </a></li>
+			</ul>
+			{% include 'app/partial/loginpartial.html' %}
 		</div>
-	</div>
+	</nav>
 
 	<div class="container body-content">
 	

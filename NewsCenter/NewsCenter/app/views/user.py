@@ -10,7 +10,7 @@ from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User as AuthUser
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -48,9 +48,9 @@ def signup(request):
 
 def activate(request, uidb64, token):
 	try:
-		uid  = force_text(urlsafe_base64_decode(uidb64))
-		user = User.objects.get(id=uid)
-	except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+		uid = force_text(urlsafe_base64_decode(uidb64))
+		user = AuthUser.objects.get(pk=uid)
+	except(TypeError, ValueError, OverflowError, AuthUser.DoesNotExist):
 		user = None
 	if user is not None and account_activation_token.check_token(user, token):
 		user.is_active = True
@@ -62,7 +62,7 @@ def activate(request, uidb64, token):
 
 def index(request):
 	"""Renders the users"""
-	return render(request, 'app/user/index.html', {'users': User.objects.all()})
+	return render(request, 'app/user/index.html', {'users': AuthUser.objects.all()})
 
 def register(request, template_name, authentication_form, extra_context):
 	"""Renders the register page."""

@@ -23,4 +23,8 @@ from ..listviews import ArticleListView
 # Other
 def comments(request):
 	"""Renders all of the comments"""
-	return render(request, 'app/comments.html', {'comments': Comment.objects.all()})
+	return render(request, 'app/comments.html', {'collection': Comment.objects.all()})
+
+def organizers(request):
+	"""Renders all of the organizers"""
+	return render(request, 'app/organizers.html', {'collection' : Association.objects.all() })

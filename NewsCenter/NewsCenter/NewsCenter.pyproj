@@ -41,6 +41,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\models.py" />
+    <Compile Include="app\support\render_structs.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\support\utilities.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\support\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\tests.py" />
     <Compile Include="app\token_generator.py">
       <SubType>Code</SubType>
@@ -69,6 +78,7 @@
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="app\migrations\" />
+    <Folder Include="app\support\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />
@@ -90,6 +100,7 @@
     <Content Include="app\static\app\content\bootstrap_override.css" />
     <Content Include="app\static\app\content\layout.css" />
     <Content Include="app\templates\admin\base_site.html" />
+    <Content Include="app\templates\app\organizers.html" />
     <Content Include="app\templates\app\partial\articlepartial.html" />
     <Content Include="app\templates\app\news\delete.html" />
     <Content Include="app\templates\app\news\details.html" />
@@ -99,7 +110,6 @@
     <Content Include="app\templates\app\user\index.html" />
     <Content Include="app\templates\app\comments.html" />
     <Content Include="app\templates\app\news\index.html" />
-    <Content Include="app\templates\app\user\register.html" />
     <Content Include="app\templates\app\user\signup.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />

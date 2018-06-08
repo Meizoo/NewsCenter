@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
 from .models import *
 
 class AdminNews(admin.ModelAdmin):
@@ -6,9 +7,6 @@ class AdminNews(admin.ModelAdmin):
 
 class AdminInterested(admin.ModelAdmin):
 	list_display = ('id_user','id_news')
-
-class AdminUser(admin.ModelAdmin):
-	list_display = ('name','surname','age','state')
 
 class AdminDeclaration(admin.ModelAdmin):
 	list_display = ('id_user','id_news')
@@ -25,7 +23,6 @@ class AdminAssociation(admin.ModelAdmin):
 admin.site.register(Association, AdminAssociation)
 admin.site.register(Declaration, AdminDeclaration)
 admin.site.register(News, AdminNews)
-admin.site.register(User, AdminUser)
 admin.site.register(CommentNews)
 admin.site.register(Interested)
 admin.site.register(Comment)

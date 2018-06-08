@@ -99,6 +99,7 @@
     <Content Include="app\static\app\content\bootstrap_calendar.css" />
     <Content Include="app\static\app\content\bootstrap_override.css" />
     <Content Include="app\static\app\content\layout.css" />
+    <Content Include="app\static\app\content\styles.css" />
     <Content Include="app\templates\admin\base_site.html" />
     <Content Include="app\templates\app\organizers.html" />
     <Content Include="app\templates\app\partial\articlepartial.html" />
@@ -108,7 +109,7 @@
     <Content Include="app\templates\app\news\edit.html" />
     <Content Include="app\templates\app\user\acc_active_email.html" />
     <Content Include="app\templates\app\user\index.html" />
-    <Content Include="app\templates\app\comments.html" />
+    <Content Include="app\templates\admin\comments.html" />
     <Content Include="app\templates\app\news\index.html" />
     <Content Include="app\templates\app\user\signup.html" />
     <Content Include="requirements.txt" />

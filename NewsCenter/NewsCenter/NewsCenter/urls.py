@@ -26,7 +26,7 @@ urlpatterns = [
 	path('about'    , app.views.default.about   , name='about'   ),
 
 	path('user'    , app.views.user.index   , name='user'   ),
-	path('register', app.views.user.register,
+	path('signup'  , app.views.user.signup,
 		{
 			'template_name': 'app/user/register.html',
 			'authentication_form': app.forms.BootstrapAuthenticationForm,
@@ -36,7 +36,7 @@ urlpatterns = [
 				'year': datetime.now().year,
 			}
 		},
-		name='register'),
+		name='signup'),
 	 url(r'^signup/$', app.views.user.signup, name='signup'),
 	 url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
 		app.views.user.activate, name='activate'),

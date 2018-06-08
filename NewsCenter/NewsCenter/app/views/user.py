@@ -44,7 +44,7 @@ def signup(request):
 			return HttpResponse('Please confirm your email address to complete the registration')
 	else:
 		form = SignupForm()
-	return render(request, 'app/user/signup.html', {'form': form})
+	return render(request, 'app/user/signup.html', {'title' : 'signup', 'form': form })
 
 def activate(request, uidb64, token):
 	try:
@@ -63,17 +63,3 @@ def activate(request, uidb64, token):
 def index(request):
 	"""Renders the users"""
 	return render(request, 'app/user/index.html', {'users': AuthUser.objects.all()})
-
-def register(request, template_name, authentication_form, extra_context):
-	"""Renders the register page."""
-	assert isinstance(request, HttpRequest)
-	return render(
-		request,
-		'app/user/register.html',
-		{
-			'title':'Register',
-			'message':'User registration',
-			'year':datetime.now().year,
-		}
-	)
-

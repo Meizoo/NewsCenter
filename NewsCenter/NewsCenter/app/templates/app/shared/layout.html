@@ -6,31 +6,29 @@
 	<title>{{ title }}</title>
 	{% load staticfiles %}
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css'			   %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'app/content/layout.css'			 %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap_override.css' %}" />
+	<link rel="stylesheet" href="{% static 'app/content/styles.css' %}" type="text/css"/>
 	<script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 
 <body id="override"> <!-- body-gradient -->
-	<nav class="navbar"> <!-- blue-gradient -->
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/">NewsCenter</a>
-			</div>
-			<ul class="nav navbar-right nav-pills">
-				<li class="{% if title == 'Home'	   %} blue-activegradient {% endif %}"><a href="{% url 'home'	 %} "> Home	     </a></li>
-				<li class="{% if title == 'About'	   %} blue-activegradient {% endif %}"><a href="{% url 'about'	%} "> About	     </a></li>
-				<li class="{% if title == 'Contact'    %} blue-activegradient {% endif %}"><a href="{% url 'contact'  %} "> Contact  </a></li>
-				<li class="{% if title == 'News'	   %} blue-activegradient {% endif %}"><a href="{% url 'news'	 %} "> News	 </a></li>
-				<li class="{% if title == 'Users'	   %} blue-activegradient {% endif %}"><a href="{% url 'user'	 %} "> Users	</a></li>
-				<li class="{% if title == 'Comments'   %} blue-activegradient {% endif %}"><a href="{% url 'comments' %} "> Comments </a></li>
-				<li class="{% if title == 'Organizers' %} blue-activegradient {% endif %}"><a href="{% url 'organizers' %} "> Organizers </a></li>
-			</ul>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark navbar-static-top nav-container">
+	  <a class="navbar-brand" href="/">NewsCenter</a>
+	
+	    <ul class="navbar-nav">
+	
+			<li class="nav-item {% if title == 'Home'      %} active {% endif %}"><a class="nav-link" href="{% url 'home'       %}">About      </a></li>
+			<li class="nav-item {% if title == 'About'     %} active {% endif %}"><a class="nav-link" href="{% url 'about'      %}">Home       </a></li>
+			<li class="nav-item {% if title == 'Contact'   %} active {% endif %}"><a class="nav-link" href="{% url 'contact'    %}">Contact    </a></li>
+			<li class="nav-item {% if title == 'News'      %} active {% endif %}"><a class="nav-link" href="{% url 'news'       %}">News	   </a></li>
+			<li class="nav-item {% if title == 'Users'     %} active {% endif %}"><a class="nav-link" href="{% url 'user'       %}">Users	   </a></li>
+			<li class="nav-item {% if title == 'Comments'  %} active {% endif %}"><a class="nav-link" href="{% url 'comments'   %}">Comments   </a></li>
+			<li class="nav-item {% if title == 'Organizers'%} active {% endif %}"><a class="nav-link" href="{% url 'organizers' %}">Organizers </a></li>
+	
 			{% include 'app/partial/loginpartial.html' %}
-		</div>
+	
+	    </ul>
 	</nav>
-
+	
 	<div class="container body-content">
 	
 		{% block content %}
@@ -43,10 +41,11 @@
 	</div>
 
 	<script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
-	<script src="{% static 'app/scripts/bootstrap.js' %}"></script>
-	<script src="{% static 'app/scripts/respond.js' %}"></script>
+	<script src="{% static 'app/scripts/bootstrap.js'     %}"></script>
+	<script src="{% static 'app/scripts/respond.js'       %}"></script>
 
-{% block scripts %}{% endblock %}
+{% block scripts %}
+{% endblock %}
 
 </body>
 </html>

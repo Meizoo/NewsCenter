@@ -1,12 +1,16 @@
 ﻿{% extends "app/shared/layout.html" %}
 
 {% block content %}
+
 <h1>Users</h1>
-	{% for user in users %}
-		<b>Nazwa użytkownika: {{ user.username }} </b><br /> 
-		Hasło: {{ user.password }} <br /> 
-		E-mail:{{ user.email }} <br /> 
-		Stan: {{ user.state }} <br />
-	{% endfor %}
+
+{% for user in users %}
+
+	<b>Nazwa użytkownika: {{ user.username }} </b><br /> 
+	Hasło: {{ user.password }} <br /> 
+	E-mail:{{ user.email }} <br /> 
+	Stan: {{ user.state }} <br />
+
+{% endfor %}
 
 {% endblock %}

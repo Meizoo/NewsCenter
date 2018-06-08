@@ -27,7 +27,13 @@ from ..listviews import ArticleListView
 # News handlers
 def index(request):
 	"""Renders the articles"""
-	return render(request, 'app/news/index.html', {'news': ArticleListView})
+	assert isinstance(request, HttpRequest)
+	return render(request, 'app/news/index.html', 
+	{
+		'news': ArticleListView,
+		'title':'Home',
+		'year':datetime.now().year,
+	})
 
 def details(request, pk):
 	"""Renders the article's details"""

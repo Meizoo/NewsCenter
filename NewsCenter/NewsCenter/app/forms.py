@@ -8,7 +8,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
 class SignupForm(UserCreationForm):
-	email = forms.EmailField(max_length=200, help_text='Required')
+	email   = forms.EmailField(max_length=200, help_text='Required')
+	name	= forms.CharField(max_length=64)
+	surname = forms.CharField(max_length=128)
+	age		= forms.IntegerField()
+	#state   = forms.IntegerField(choices=STATE)
+
 	class Meta:
 		model = User
 		fields = ('username', 'email', 'password1', 'password2')

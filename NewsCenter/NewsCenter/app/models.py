@@ -3,6 +3,7 @@
 """
 
 from django.db import models
+from django.contrib.auth.models import User
 
 STATE = (
 		(1, 'BANNED'),
@@ -26,25 +27,16 @@ class News(models.Model):
 	class Meta:
 		verbose_name_plural = 'News'
 
-class User(models.Model):
-	name	= models.CharField(max_length=64)
-	surname = models.CharField(max_length=128)
-	age	 = models.IntegerField()
-	state   = models.IntegerField(choices=STATE)
-	
-	def __str__(self):
-		return self.name
-
 class Interested(models.Model):
-	id_user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-	id_news = models.ForeignKey(News, null=True, on_delete=models.SET_NULL)
+	id_user = models.ForeignKey(User, null=True, on_delete=models.DO_NOTHING)
+	id_news = models.ForeignKey(News, null=True, on_delete=models.DO_NOTHING)
 
 	def __str__(self):
 		return f'{self.id_user} interested to {self.id_news}'
 
 class Declaration(models.Model):
-	id_user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-	id_news = models.ForeignKey(News, null=True, on_delete=models.SET_NULL)
+	id_user = models.ForeignKey(User, null=True, on_delete=models.DO_NOTHING)
+	id_news = models.ForeignKey(News, null=True, on_delete=models.DO_NOTHING)
 
 	def __str__(self):
 		return f'{self.id_user} declaration to {self.id_news}'

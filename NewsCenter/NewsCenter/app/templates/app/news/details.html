@@ -4,12 +4,20 @@
 
 	<h1> Tytuł: {{new.title}} </h1>
 	<hr />
-	
+
+<h3>
+	{{ declaration.message }}, {{ interested.message }}
+</h3>
+
 <h5> Data rozpoczęcia: {{new.date|date:"Y m d D"}} </h5>
 
 	<p>  Opis: {{new.description}} </p>
 	
 <br>
+
+	<button onclick="window.location='{% url 'declare' pk=new.id %}'" class="btn btn-primary">{{ declaration.button }}</button>
+
+	<button onclick="window.location='{% url 'interest' pk=new.id %}'" class="btn btn-primary">{{ interested.button }}</button>
 
 	<button onclick="window.location='{% url 'news' %}'" class="btn btn-primary">Back to News</button>
 

@@ -2,7 +2,8 @@
 
 {% block content %}
 <h1>Comments</h1>
-	{% for comment in comments  %}
+	{% for comment in collection  %}
+
 		<b>Komentarz: {{ comment.comment }} </b><br /> 
 	 
 	{% endfor %}

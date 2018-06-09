@@ -37,8 +37,8 @@ def index(request):
 
 def details(request, pk):
 	"""Renders the article's details"""
-	id_user = User.objects.get(id=request.user.id)
-	id_news = News.objects.get(id=pk)
+	id_user = find_user(request)
+	id_news = find_news(pk)
 
 	if request.method == 'POST':
 		form = CommentForms(request.POST)
@@ -58,62 +58,38 @@ def details(request, pk):
 		form = EntryForms()	
 
 	return render(request, 'app/news/details.html', {
-		'new': News.objects.get(id=pk), 
-		'comments' : Comment.objects.filter(id__in=CommentNews.objects.filter(id_news=pk).values_list('id_comment', flat=True)),
-		'declaration' : RenderDeclared(not is_none_or_empty(Declaration.objects.filter(id_user=id_user).filter(id_news=id_news))),
-		'interested' : RenderInterest(not is_none_or_empty(Interested.objects.filter(id_user=id_user).filter(id_news=id_news)))
+		'new': id_news, 
+		'comments' : find_comments(pk),
+		'declaration' : declaration_to_str(not is_none_or_empty(find_declarations(id_user, id_news))),
+		'interested' : interest_to_str(not is_none_or_empty(find_interested(id_user, id_news)))
 	})
 
 def declare(request, pk):
 	"""Creates declaration model for given article for current user. """
-	id_user = User.objects.get(id=request.user.id)
-	id_news = News.objects.get(id=pk)
+	id_user = find_user(request)
+	id_news = find_news(pk)
 
-	d = Declaration.objects.filter(id_user=id_user).filter(id_news=id_news)
-
-	bool = is_none_or_empty(d)
-
-	if bool:
-		Declaration.objects.create(
-				id_user = id_user,
-				id_news = id_news
-		).save()
-	else:
-		d.delete()
+	bool = toggle_item(find_declarations(id_user, id_news), id_user, id_news, Declaration.objects)
 
 	return render(request, 'app/news/details.html', {
-		'new': News.objects.get(id=pk), 
-		'comments' : Comment.objects.filter(
-			id__in=CommentNews.objects.filter(id_news=pk).values_list('id_comment', flat=True)
-		),
-		'declaration' : RenderDeclared(bool),
-		'interested' : RenderInterest(not is_none_or_empty(Interested.objects.filter(id_user=id_user).filter(id_news=id_news)))
+		'new': id_news, 
+		'comments' : find_comments(pk),
+		'declaration' : declaration_to_str(bool),
+		'interested' : interest_to_str(not is_none_or_empty(find_interested(id_user, id_news)))
 	})
 
 def interest(request, pk):
 	"""Creates interest model for given article for current user. """
-	id_user = User.objects.get(id=request.user.id)
-	id_news = News.objects.get(id=pk)
+	id_user = find_user(request)
+	id_news = find_news(pk)
 
-	d = Interested.objects.filter(id_user=id_user).filter(id_news=id_news)
-
-	bool = is_none_or_empty(d)
-
-	if bool:
-		Interested.objects.create(
-				id_user = id_user,
-				id_news = id_news
-		).save()
-	else:
-		d.delete()
+	bool = toggle_item(find_interested(id_user, id_news), id_user, id_news, Interested.objects)
 
 	return render(request, 'app/news/details.html', {
-		'new': News.objects.get(id=pk), 
-		'comments' : Comment.objects.filter(
-			id__in=CommentNews.objects.filter(id_news=pk).values_list('id_comment', flat=True)
-		),
-		'declaration' : RenderDeclared(not is_none_or_empty(Declaration.objects.filter(id_user=id_user).filter(id_news=id_news))),
-		'interested' : RenderInterest(bool)
+		'new': id_news, 
+		'comments' : find_comments(pk),
+		'declaration' : declaration_to_str(not is_none_or_empty(find_declarations(id_user, id_news))),
+		'interested' : interest_to_str(bool)
 	})
 
 def add(request):
@@ -137,7 +113,7 @@ def add(request):
 
 def delete(request, id):
 	"""Deletes article of given id"""
-	news = News.objects.get(id=id)
+	id_news = find_news(id)
 	
 	if request.method == 'POST':
 		news.delete()
@@ -147,12 +123,12 @@ def delete(request, id):
 
 def edit(request, id):
 	"""Edits article of given id"""
-	news = News.objects.get(id=id)
+	id_news = find_news(id)
 	return render(request,'app/news/edit.html', {'news': news})
 
 def update(request, id):
 	"""Updates article of given id"""
-	news = News.objects.get(id=id)
+	id_news = find_news(id)
 
 	if request.method == 'POST':
 		news.title = request.POST['title'];

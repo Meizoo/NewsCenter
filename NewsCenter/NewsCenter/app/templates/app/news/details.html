@@ -11,8 +11,10 @@
 	<tbody>
 		<tr>
 			<td scope="col"> 
-				<button onclick="window.location='{% url 'declare' pk=new.id %}' " class="btn btn-primary">{{ declaration.message }}</button> 
-				<button onclick="window.location='{% url 'interest' pk=new.id %}'" class="btn btn-primary">{{ interested.button }}</button> 
+				<button onclick="window.location='{% url 'declare' pk=new.id %}' " class="btn btn-primary">{{ declaration }}</button> 
+				{% if declaration == 'Declare' %}
+					<button onclick="window.location='{% url 'interest' pk=new.id %}'" class="btn btn-primary">{{ interested }}</button> 
+				{% endif %}
 			</td>
 			<td scope="col"> Data rozpoczęcia: {{ new.date|date:"Y m d D" }} </td>
 			<td scope="col"> Adres: {{ new.address }} </td>

@@ -9,5 +9,13 @@
 {% endif %}
 
 {% for field in form %}
-  <!-- code suppressed -->
+  <div class="form-group">
+    {{ field.label_tag }}
+	{{ field }}
+    {% if field.help_text %}
+      <small class="form-text text-muted">
+        {{ field.help_text|safe }}  <!-- new code here -->
+      </small>
+    {% endif %}
+  </div>
 {% endfor %}

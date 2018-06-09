@@ -24,6 +24,9 @@ from ..models    import *
 from ..forms     import EntryForms, CommentForms
 from ..listviews import ArticleListView
 
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import activate
+
 # News handlers
 def index(request):
 	"""Renders the articles"""
@@ -31,7 +34,7 @@ def index(request):
 	return render(request, 'app/news/index.html', 
 	{
 		'news': ArticleListView,
-		'title':'Home',
+		'title': _('Wiadomości'),
 		'year':datetime.now().year,
 	})
 
@@ -113,22 +116,22 @@ def add(request):
 
 def delete(request, id):
 	"""Deletes article of given id"""
-	id_news = find_news(id)
+	news = find_news(id)
 	
 	if request.method == 'POST':
 		news.delete()
 		return HttpResponseRedirect('/news')
 	
-	return render(request,'app/news/delete.html',{'news': news})
+	return render(request,'app/news/delete.html',{'news': news })
 
 def edit(request, id):
 	"""Edits article of given id"""
-	id_news = find_news(id)
+	news = find_news(id)
 	return render(request,'app/news/edit.html', {'news': news})
 
 def update(request, id):
 	"""Updates article of given id"""
-	id_news = find_news(id)
+	news = find_news(id)
 
 	if request.method == 'POST':
 		news.title = request.POST['title'];

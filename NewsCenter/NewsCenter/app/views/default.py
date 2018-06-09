@@ -16,14 +16,18 @@ from calendar import HTMLCalendar
 from ..models import *
 from ..forms import EntryForms
 
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import activate
+
 def index(request):
 	"""Renders the home page."""
 	assert isinstance(request, HttpRequest)
+
 	return render(
 		request,
 		'app/home/index.html',
 		{
-			'title':'home',
+			'title': _('Strona główna'),
 			'year':datetime.now().year,
 		}
 	)
@@ -35,8 +39,7 @@ def contact(request):
 		request,
 		'app/home/contact.html',
 		{
-			'title':'contact',
-			'message':'Contact page',
+			'title': _('Kontakt'),
 			'year':datetime.now().year,
 		}
 	)
@@ -48,8 +51,7 @@ def about(request):
 		request,
 		'app/home/about.html',
 		{
-			'title':'about',
-			'message':'Project description',
+			'title': _('O nas'),
 			'year':datetime.now().year,
 		}
 	)

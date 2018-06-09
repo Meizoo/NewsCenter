@@ -1,13 +1,16 @@
 from ..models    import *
 
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import activate
+
 def is_none_or_empty(array):
 	return array is None or len(array) == 0
 
 def declaration_to_str(bool):
-	return 'Declare' if bool else 'Undeclare'
+	return _('Wezmę udział') if bool else _('Nie wezmę udziału')
 
 def interest_to_str(bool):
-	return 'Interesting' if bool else 'Not interesting'
+	return _('Zainteresowany') if bool else _('Niezainteresowany')
 
 def find_user(request):
 	return User.objects.get(id=request.user.id)

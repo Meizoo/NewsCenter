@@ -24,6 +24,9 @@ from ..models import *
 from ..forms import EntryForms,SignupForm, EditProfileForm
 from ..token_generator import account_activation_token
 
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import activate
+
 def signup(request):
 	if request.method == 'POST':
 		form = SignupForm(request.POST)

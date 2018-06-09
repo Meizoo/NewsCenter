@@ -77,7 +77,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\locale\en\" />
+    <Folder Include="app\locale\pl\" />
     <Folder Include="app\migrations\" />
+    <Folder Include="app\locale\" />
     <Folder Include="app\static\app\content\" />
     <Folder Include="app\support\" />
     <Folder Include="app\static\" />

@@ -1,0 +1,31 @@
+﻿{% extends 'app/shared/layout.html' %} 
+
+{% block content %}
+
+<h2> User Details! </h2>
+<div class="table-responsive-sm">
+	<table class="table table-light">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col"> Username:    </th> 
+			<th scope="col"> Email:   </th> 
+			<th scope="col"> Name: </th> 
+			<th scope="col"> Surname: </th> 
+			<th scope="col"> Age: </th> 
+			<th scope="col"> Access: </th> 
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td scope="col"> {{ user.username }} </td>
+			<td scope="col"> {{ user.email }} </td>
+			<td scope="col"> {{ user.name }} </td>
+			<td scope="col"> {{ user.surname }} </td>
+			<td scope="col"> {{ user.age }} </td>
+			<td scope="col"> {{ user.age }} </td>
+		</tr>
+	</tbody>
+	</table>
+			<button	onclick="window.location = '{% url 'edit' %}'" class="btn btn-primary" scope="col">Edit</button>
+</div>
+{% endblock %}

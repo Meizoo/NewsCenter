@@ -155,5 +155,4 @@ def update(request, id):
 		news.address = request.POST['address'];
 		news.save()
 		return HttpResponseRedirect('/news')
-
-	return render(request, 'app/news/upgrade.html', {'news': news})
+	return HttpResponseRedirect('/edit')

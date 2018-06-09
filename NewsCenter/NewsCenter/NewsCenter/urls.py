@@ -25,20 +25,13 @@ urlpatterns = [
 	path('contact'  , app.views.default.contact , name='contact' ),
 	path('about'    , app.views.default.about   , name='about'   ),
 
-	path('user'    , app.views.user.index   , name='user'   ),
-	path('register', app.views.user.register,
-		{
-			'template_name': 'app/user/register.html',
-			'authentication_form': app.forms.BootstrapAuthenticationForm,
-			'extra_context':
-			{
-				'title': 'Register',
-				'year': datetime.now().year,
-			}
-		},
-		name='register'),
-	 url(r'^signup/$', app.views.user.signup, name='signup'),
-	 url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+	path('user'					, app.views.user.index		, name='user'   ),
+	path('user/user_details'    , app.views.user.details    , name='details'),
+	path('user/edit'			, app.views.user.edit		, name='edit'   ),
+	path('user/update'			, app.views.user.update     , name='update' ),
+
+	url(r'^signup/$', app.views.user.signup, name='signup'),
+	url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
 		app.views.user.activate, name='activate'),
 
 	path('login',

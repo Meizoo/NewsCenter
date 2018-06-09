@@ -121,6 +121,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'djangoemailbot@gmail.com'
 EMAIL_HOST_PASSWORD = 'djangobot'
 EMAIL_PORT = 587
+
 LOGIN_REDIRECT_URL = 'home'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/

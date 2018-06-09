@@ -15,11 +15,11 @@ STATE = (
 	)
 
 class News(models.Model):
-	title	   = models.CharField(max_length = 32)
-	date		= models.DateTimeField()
+	title       = models.CharField(max_length = 32)
+	date        = models.DateTimeField()
 	description = models.TextField()
-	address	 = models.CharField(max_length = 32)
-	created	 = models.DateTimeField(auto_now_add=True)
+	address     = models.CharField(max_length = 32)
+	created     = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
 		return f'{self.title} {self.date}'

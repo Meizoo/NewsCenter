@@ -21,9 +21,9 @@ admin.autodiscover()
 #newspatterns = [url()]
 
 urlpatterns = [
-	path(''         , app.views.default.index   , name='home'    ),
-	path('^contact/$'  , app.views.default.contact , name='contact' ),
-	path('about'    , app.views.default.about   , name='about'   ),
+	path(''            , app.views.default.index   , name='home'    ),
+	path('contact'  , app.views.default.contact    , name='contact' ),
+	path('about'       , app.views.default.about   , name='about'   ),
 
 	path('user'					, app.views.user.index		, name='user'   ),
 	path('user/user_details'    , app.views.user.details    , name='details'),

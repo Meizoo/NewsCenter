@@ -21,7 +21,7 @@ from app.calendar_pattern import *
 from datetime import datetime, date
 from calendar import HTMLCalendar
 from ..models import *
-from ..forms import EntryForms,SignupForm
+from ..forms import EntryForms,SignupForm, EditProfileForm
 from ..token_generator import account_activation_token
 
 def signup(request):
@@ -63,3 +63,30 @@ def activate(request, uidb64, token):
 def index(request):
 	"""Renders the users"""
 	return render(request, 'app/user/index.html', {'users': AuthUser.objects.all()})
+
+def details(request):
+	id_user = User.objects.get(id=request.user.id)
+	is_input = False
+	submitbutton= request.POST.get('submit')
+	if submitbutton:
+		is_input = True
+	return render(request, 'app/user/user_details.html',{'user': id_user, 'is_input': is_input, 'submitbutton': submitbutton})
+
+def edit(request):
+	id_user = EditProfileForm(instance=request.user)
+	return render(request, 'app/user/edit.html',{'user': id_user})
+
+def update(request):
+	"""Updates article of given id"""
+	
+	if request.method == 'POST':
+		id_user = EditProfileForm(request.POST,instance=request.user)
+		#user.username = request.POST['username'];
+		#user.email = request.POST['email'];
+		#user.name = request.POST['name'];
+		#user.surname = request.POST['surname'];
+		#user.age = request.POST['age'];
+		user.save()
+		return HttpResponseRedirect('/user_details')
+	return HttpResponseRedirect('/edit')
+	

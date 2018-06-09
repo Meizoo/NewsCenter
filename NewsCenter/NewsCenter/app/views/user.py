@@ -65,7 +65,9 @@ def activate(request, uidb64, token):
 
 def index(request):
 	"""Renders the users"""
-	return render(request, 'app/user/index.html', {'users': AuthUser.objects.all()})
+	return render(request, 'app/user/index.html', {
+		'profiles' : UserProfile.objects.all()
+	})
 
 def details(request):
 	id_user = User.objects.get(id=request.user.id)

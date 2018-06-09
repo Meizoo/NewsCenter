@@ -13,11 +13,11 @@
 			</tr>
 		</thead>
 		<tbody>	
-			{% for user in users %}
+			{% for profile in profiles %}
 			<tr>
-				<td scope="col">  {{ user.username }} </td>
-				<td scope="col">  {{ user.email    }} </td>
-				<td scope="col">  {{ user.state    }} </td>
+				<td scope="col">  {{ profile.user.username }} </td>
+				<td scope="col">  {{ profile.user.email    }} </td>
+				<td scope="col">  {{ profile.role          }} </td>
 			</tr>
 			{% endfor %}
 		</tbody>

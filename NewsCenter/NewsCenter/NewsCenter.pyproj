@@ -44,6 +44,9 @@
     <Compile Include="app\support\render_structs.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\support\states.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\support\utilities.py">
       <SubType>Code</SubType>
     </Compile>

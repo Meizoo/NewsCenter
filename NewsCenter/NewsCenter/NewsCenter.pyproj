@@ -118,6 +118,7 @@
     <Content Include="app\templates\app\news\details.html" />
     <Content Include="app\templates\app\news\create.html" />
     <Content Include="app\templates\app\news\edit.html" />
+    <Content Include="app\templates\app\partial\form.html" />
     <Content Include="app\templates\app\user\acc_active_email.html" />
     <Content Include="app\templates\app\user\edit.html" />
     <Content Include="app\templates\app\user\index.html" />

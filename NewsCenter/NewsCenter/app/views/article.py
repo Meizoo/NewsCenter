@@ -58,7 +58,7 @@ def details(request, pk):
 		form = EntryForms()	
 
 	return render(request, 'app/news/details.html', {
-		'new': News.objects.get(id=pk), 
+		'new': id_news, 
 		'comments' : Comment.objects.filter(id__in=CommentNews.objects.filter(id_news=pk).values_list('id_comment', flat=True)),
 		'declaration' : RenderDeclared(not is_none_or_empty(Declaration.objects.filter(id_user=id_user).filter(id_news=id_news))),
 		'interested' : RenderInterest(not is_none_or_empty(Interested.objects.filter(id_user=id_user).filter(id_news=id_news)))

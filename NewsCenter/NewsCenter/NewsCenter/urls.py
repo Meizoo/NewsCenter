@@ -7,6 +7,7 @@ from datetime import datetime
 from django.conf.urls import url,include
 from django.conf.urls import include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls	import path
 
 from app import views
@@ -22,7 +23,7 @@ admin.autodiscover()
 
 urlpatterns = [
 	path(''         , app.views.default.index   , name='home'    ),
-	path('^contact/$'  , app.views.default.contact , name='contact' ),
+	path('contact'  , app.views.default.contact , name='contact' ),
 	path('about'    , app.views.default.about   , name='about'   ),
 
 	path('user'					, app.views.user.index		, name='user'   ),
@@ -31,6 +32,7 @@ urlpatterns = [
 	path('user/update'			, app.views.user.update     , name='update' ),
 
 	url(r'^signup/$', app.views.user.signup, name='signup'),
+	url(r'^login/$', auth_views.LoginView.as_view(template_name='app/user/login.html'), name='login'),
 	url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
 		app.views.user.activate, name='activate'),
 

@@ -22,7 +22,7 @@ admin.autodiscover()
 
 urlpatterns = [
 	path(''         , app.views.default.index   , name='home'    ),
-	path('contact'  , app.views.default.contact , name='contact' ),
+	path('^contact/$'  , app.views.default.contact , name='contact' ),
 	path('about'    , app.views.default.about   , name='about'   ),
 
 	path('user'					, app.views.user.index		, name='user'   ),

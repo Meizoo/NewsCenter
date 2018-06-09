@@ -1,0 +1,27 @@
+﻿{% extends "app/shared/layout.html" %}
+
+{% block content %}
+
+<br/>
+
+<div class="table-responsive-sm">
+	<table class="table table-light">
+		<caption>List of all comments</caption>
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col"> Content </th> 
+			<th scope="col"> User </th> 
+		</tr>
+	</thead>
+	<tbody>
+		{% for comment in collection  %}
+		<tr>
+			<td scope="col"> {{ comment.comment }} </td>
+			<td scope="col"> {{ comment.id_user }} </td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+</div>
+
+{% endblock %}

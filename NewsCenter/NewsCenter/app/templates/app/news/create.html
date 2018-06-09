@@ -1,6 +1,7 @@
 ﻿{% extends 'app/shared/layout.html'%}
 
 {% block content %}
+
 <div class="container form-group">
 	<br />
 	<div class="row">
@@ -12,6 +13,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="container form-group">
 	<form method="post">
 		{% csrf_token %} 
@@ -24,4 +26,5 @@
 	<button type="submit" class="btn btn-primary">Confirm</button>
 	</form>
 </div>
+
 {% endblock %}

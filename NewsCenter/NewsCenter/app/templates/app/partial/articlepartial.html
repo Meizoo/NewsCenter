@@ -1,23 +1,26 @@
-﻿<h2> 
-	{{ j.title }} 
-</h2>
+﻿
+<div class="panel panel-default">
+	<div class="panel-heading">
+		{{ j.title }} - {{ j.date}}
+	</div>
+	<div class="panel-body">
 
-<h4> 
-	{{ j.date }} 
-</h4>
+		<br />
 
-<p>
-	 {{ j.description|truncatechars:24 }}
-</p>
+		<button onclick="window.location='{% url 'details' pk=j.id %}'" type="button" class="btn btn-primary">
+			View Details
+		</button>
 
-<button onclick="window.location='{% url 'details' pk=j.id %}'" type="button" class="btn btn-primary">
-	View Details
-</button>
+		<button onclick="window.location='{% url 'delete'  id=j.id %}'" type="button" class="btn btn-primary">
+			Delete
+		</button>
 
-<button onclick="window.location='{% url 'delete'  id=j.id %}'" type="button" class="btn btn-primary">
-	Delete
-</button>
+		<button onclick="window.location='{% url 'edit'  id=j.id %}'" type="button" class="btn btn-primary">
+			Edit
+		</button>
 
-<button onclick="window.location='{% url 'edit'  id=j.id %}'" type="button" class="btn btn-primary">
-	Edit
-</button>
+		<br />
+
+		 {{ j.description|truncatechars:24 }}
+	</div>
+</div>

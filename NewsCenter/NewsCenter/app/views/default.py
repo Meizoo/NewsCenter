@@ -23,7 +23,7 @@ def index(request):
 		request,
 		'app/home/index.html',
 		{
-			'title':'Home',
+			'title':'home',
 			'year':datetime.now().year,
 		}
 	)
@@ -35,7 +35,7 @@ def contact(request):
 		request,
 		'app/home/contact.html',
 		{
-			'title':'Contact',
+			'title':'contact',
 			'message':'Contact page',
 			'year':datetime.now().year,
 		}
@@ -48,7 +48,7 @@ def about(request):
 		request,
 		'app/home/about.html',
 		{
-			'title':'About',
+			'title':'about',
 			'message':'Project description',
 			'year':datetime.now().year,
 		}

@@ -2,15 +2,26 @@
 
 {% block content %}
 
-<h1>Users</h1>
-
-{% for user in users %}
-
-	<b>Nazwa użytkownika: {{ user.username }} </b><br /> 
-	Hasło: {{ user.password }} <br /> 
-	E-mail:{{ user.email }} <br /> 
-	Stan: {{ user.state }} <br />
-
-{% endfor %}
+<div class="container">
+	<table class="table table-borderless table-light">
+		<caption>List of all users</caption>
+		<thead>
+			<tr>
+				<th scope="col">Nazwa użytkownika</th>
+				<th scope="col">E-mail           </th>
+				<th scope="col">Stan             </th>
+			</tr>
+		</thead>
+		<tbody>	
+			{% for user in users %}
+			<tr>
+				<td scope="col">  {{ user.username }} </td>
+				<td scope="col">  {{ user.email    }} </td>
+				<td scope="col">  {{ user.state    }} </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
 
 {% endblock %}

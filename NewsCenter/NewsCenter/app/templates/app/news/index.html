@@ -2,16 +2,6 @@
 
 {% block content %}
 
-<h2>Calendar</h2>	
-
-	<br />
-		<div class="row">
-			<div class="col-sm-3">
-				<button onclick="window.location='{% url 'add' %}'" type="button" class="btn btn-primary">Add news</button>
-			</div>
-		</div>
-	<hr />
-
 <table class="table">
 	{% for i in news.querytable %}
 		<tr>
@@ -23,5 +13,13 @@
 		</tr>
 	{% endfor %}
 </table>
+
+<br/>
+
+<div class="row">
+	<div class="col-sm-3">
+		<button onclick="window.location='{% url 'add' %}'" type="button" class="btn btn-primary">Add news</button>
+	</div>
+</div>
 
 {% endblock %}

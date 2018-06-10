@@ -86,8 +86,7 @@ def declare(request, pk):
 
 	bool = toggle_item(find_declarations(id_user, id_news), id_user, id_news, Declaration.objects)
 
-	bool = is_none_or_empty(d)
-	if RenderDeclared(not is_none_or_empty(d)).message == 'Declared':
+	if declaration_to_str(bool).message == 'Declared':
 		current_site = get_current_site(request)
 		mail_subject = 'Declared to meetup.'
 		message = render_to_string('app/user/declared_email.html', {
@@ -97,14 +96,6 @@ def declare(request, pk):
 		})
 		to_email = id_user.email
 		EmailMessage(mail_subject, message, to=[to_email]).send()
-	if bool:
-		Declaration.objects.create(
-				id_user = id_user,
-				id_news = id_news
-		).save()
-	else:
-		d.delete()
-
 	return render(request, 'app/news/details.html', {
 		'new': id_news, 
 		'comments' : find_comments(pk),

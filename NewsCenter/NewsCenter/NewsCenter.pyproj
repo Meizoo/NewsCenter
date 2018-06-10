@@ -86,10 +86,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\locale\" />
     <Folder Include="app\locale\en\" />
     <Folder Include="app\locale\pl\" />
     <Folder Include="app\migrations\" />
     <Folder Include="app\templates\app\user\pswd_reset\" />
+    <Folder Include="app\templatetags\" />
     <Folder Include="D:\repo\NewsCenter\NewsCenter\NewsCenter\app\templatetags\" />
     <Folder Include="app\static\app\content\" />
     <Folder Include="app\support\" />

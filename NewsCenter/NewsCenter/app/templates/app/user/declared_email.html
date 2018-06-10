@@ -1,0 +1,8 @@
+{% autoescape off %}
+Czesc {{ user.username }},
+Dzieki za zdeklarowanie sie na wydarzenie: {{ news.title }}
+Miejsce wydarzenia to: {{ news.address }} Odbedzie sie {{ news.date }}.
+Nie przegap tej okazji, aby sie zobaczyc ze swoimi znajomymi!
+Ponizej link do wydarzenia
+http://{{ domain }}/details/{{ news.id }}
+{% endautoescape %}

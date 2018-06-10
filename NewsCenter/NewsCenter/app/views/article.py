@@ -1,15 +1,28 @@
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 
 from app import models, forms
 
 from django.contrib.auth.models import User
 
 from django.utils.safestring import mark_safe
+from django.utils.encoding import force_bytes, force_text
 from django.utils.html       import conditional_escape
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template         import RequestContext
 from django.contrib          import messages
-from django.http             import HttpRequest, Http404, HttpResponseRedirect
+from django.http             import HttpRequest, Http404, HttpResponseRedirect,HttpResponse
+from django.template import RequestContext
+from django.template.loader import render_to_string
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
 
+from app.calendar_pattern import *
+
+from datetime import datetime, date
+from calendar import HTMLCalendar
+from ..models import *
+from ..forms import EntryForms,SignupForm, EditProfileForm
+from ..token_generator import account_activation_token
 from datetime import datetime, date
 from calendar import HTMLCalendar
 
@@ -56,7 +69,6 @@ def details(request, pk):
 			return HttpResponseRedirect('/news')
 	else:
 		form = EntryForms()	
-
 	return render(request, 'app/news/details.html', {
 		'new': id_news, 
 		'comments' : Comment.objects.filter(id__in=CommentNews.objects.filter(id_news=pk).values_list('id_comment', flat=True)),
@@ -72,7 +84,16 @@ def declare(request, pk):
 	d = Declaration.objects.filter(id_user=id_user).filter(id_news=id_news)
 
 	bool = is_none_or_empty(d)
-
+	if RenderDeclared(not is_none_or_empty(d)).message == 'Declared':
+		current_site = get_current_site(request)
+		mail_subject = 'Declared to meetup.'
+		message = render_to_string('app/user/declared_email.html', {
+			'user'   : id_user,
+			'domain' : current_site.domain,
+			'news'   : id_news
+		})
+		to_email = id_user.email
+		EmailMessage(mail_subject, message, to=[to_email]).send()
 	if bool:
 		Declaration.objects.create(
 				id_user = id_user,

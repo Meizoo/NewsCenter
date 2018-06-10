@@ -24,6 +24,9 @@ from ..models import *
 from ..forms import EntryForms,SignupForm, EditProfileForm
 from ..token_generator import account_activation_token
 
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import activate
+
 def signup(request):
 	if request.method == 'POST':
 		form = SignupForm(request.POST)
@@ -62,7 +65,9 @@ def activate(request, uidb64, token):
 
 def index(request):
 	"""Renders the users"""
-	return render(request, 'app/user/index.html', {'users': AuthUser.objects.all()})
+	return render(request, 'app/user/index.html', {
+		'profiles' : UserProfile.objects.all()
+	})
 
 def details(request):
 	id_user = User.objects.get(id=request.user.id)

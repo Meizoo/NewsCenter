@@ -2,6 +2,9 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from .models import *
 
+class AdminUserProfile(admin.ModelAdmin):
+	list_display = ('user','role')
+
 class AdminNews(admin.ModelAdmin):
 	list_display = ('title', 'date', 'description', 'address')
 
@@ -20,6 +23,7 @@ class AdminCommentNews(admin.ModelAdmin):
 class AdminAssociation(admin.ModelAdmin):
 	list_display = ('name', 'owner', 'contact', 'address')
 
+admin.site.register(UserProfile, AdminUserProfile)
 admin.site.register(Association, AdminAssociation)
 admin.site.register(Declaration, AdminDeclaration)
 admin.site.register(News, AdminNews)

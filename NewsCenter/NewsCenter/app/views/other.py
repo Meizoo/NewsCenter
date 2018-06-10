@@ -20,16 +20,23 @@ from ..models import *
 from ..forms import EntryForms
 from ..listviews import ArticleListView
 
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import activate
+
 # Other
 def comments(request):
 	"""Renders all of the comments"""
 	return render(request, 'app/comments.html', 
 	{
-		'title':'comments',
+		'title': _('Komentarze'),
 		'year':datetime.now().year,
 		'collection': Comment.objects.all()
 	})
 
 def organizers(request):
 	"""Renders all of the organizers"""
-	return render(request, 'app/organizers.html', {'collection' : Association.objects.all() })
+	return render(request, 'app/organizers.html', 
+	{
+		'title' : _('Organizatorzy'),
+		'collection' : Association.objects.all() 
+	})

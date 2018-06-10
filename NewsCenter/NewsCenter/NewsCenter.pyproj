@@ -47,6 +47,9 @@
     <Compile Include="app\support\render_structs.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\support\states.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\support\utilities.py">
       <SubType>Code</SubType>
     </Compile>
@@ -83,6 +86,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\locale\en\" />
+    <Folder Include="app\locale\pl\" />
     <Folder Include="app\migrations\" />
     <Folder Include="app\templates\app\user\pswd_reset\" />
     <Folder Include="D:\repo\NewsCenter\NewsCenter\NewsCenter\app\templatetags\" />

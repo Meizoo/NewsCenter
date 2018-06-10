@@ -5,14 +5,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-STATE = (
-		(1, 'BANNED'),
-		(2, 'GUEST'),
-		(3, 'USER'),
-		(4, 'MODERATOR'),
-		(5, 'ADMINISTRATOR'),
-		(6, 'HEAD_ADMINISTRATOR'),
-	)
+class UserProfile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	role = models.CharField(max_length=16)
 
 class News(models.Model):
 	title       = models.CharField(max_length = 32)

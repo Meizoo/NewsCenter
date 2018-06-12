@@ -49,6 +49,7 @@ def index(request):
 		'news': ArticleListView,
 		'title': _('Wiadomości'),
 		'year':datetime.now().year,
+		'user' : find_profile(request)
 	})
 
 def details(request, pk):
@@ -86,16 +87,16 @@ def declare(request, pk):
 
 	bool = toggle_item(find_declarations(id_user, id_news), id_user, id_news, Declaration.objects)
 
-	if declaration_to_str(bool).message == 'Declared':
-		current_site = get_current_site(request)
-		mail_subject = 'Declared to meetup.'
-		message = render_to_string('app/user/declared_email.html', {
-			'user'   : id_user,
-			'domain' : current_site.domain,
-			'news'   : id_news
-		})
-		to_email = id_user.email
-		EmailMessage(mail_subject, message, to=[to_email]).send()
+	#if declaration_to_str(bool).message == 'Declared':
+	#	current_site = get_current_site(request)
+	#	mail_subject = 'Zadeklarowano udział w spotkaniu'
+	#	message = render_to_string('app/user/declared_email.html', {
+	#		'user'   : id_user,
+	#		'domain' : current_site.domain,
+	#		'news'   : id_news
+	#	})
+	#	to_email = id_user.email
+	#	EmailMessage(mail_subject, message, to=[to_email]).send()
 	return render(request, 'app/news/details.html', {
 		'new': id_news, 
 		'comments' : find_comments(pk),
@@ -119,6 +120,9 @@ def interest(request, pk):
 
 def add(request):
 	"""Adds article"""
+	if not is_mod(request):
+		return Http404()
+
 	if request.method == 'POST':
 		form = EntryForms(request.POST)
 
@@ -138,6 +142,9 @@ def add(request):
 
 def delete(request, id):
 	"""Deletes article of given id"""
+	if not is_mod(request):
+		return Http404()
+
 	news = find_news(id)
 	
 	if request.method == 'POST':
@@ -148,11 +155,17 @@ def delete(request, id):
 
 def edit(request, id):
 	"""Edits article of given id"""
+	if not is_mod(request):
+		return Http404()
+
 	news = find_news(id)
 	return render(request,'app/news/edit.html', {'news': news})
 
 def update(request, id):
 	"""Updates article of given id"""
+	if not is_mod(request):
+		return Http404()
+
 	news = find_news(id)
 
 	if request.method == 'POST':

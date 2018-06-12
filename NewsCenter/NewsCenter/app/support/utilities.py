@@ -15,6 +15,13 @@ def interest_to_str(bool):
 def find_user(request):
 	return User.objects.get(id=request.user.id)
 
+def find_profile(request):
+	return UserProfile.objects.get(user=request.user)
+
+def is_mod(request):
+	user = UserProfile.objects.get(user=request.user)
+	return user.role == 'moderator' or user.role == 'administrator'
+
 def find_news(pk):
 	return News.objects.get(id=pk)
 

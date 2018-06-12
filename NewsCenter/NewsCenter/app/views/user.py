@@ -36,7 +36,7 @@ def signup(request):
 			user.is_active = False
 			user.save()
 			current_site = get_current_site(request)
-			mail_subject = 'Activate your blog account.'
+			mail_subject = 'NewsCenter: Weryfikacja adresu e-mail'
 			message = render_to_string('app/user/acc_active_email.html', {
 				'user'   : user,
 				'domain' : current_site.domain,
@@ -45,7 +45,7 @@ def signup(request):
 			})
 			to_email = form.cleaned_data.get('email')
 			EmailMessage(mail_subject, message, to=[to_email]).send()
-			message2 = 'Please confirm your email address to complete the registration'
+			message2 = 'Potwierdź swój adres e-mail w celu weryfikacji konta.'
 			return render(request, 'app/user/signup_done.html', {'user': user, 'message': message2})
 	else:
 		form = SignupForm()
@@ -60,10 +60,11 @@ def activate(request, uidb64, token):
 	if user is not None and account_activation_token.check_token(user, token):
 		user.is_active = True
 		user.save()
+		UserProfile.objects.create(user=user, role='użytkownik')
 		login(request, user)
-		message = 'Thank you for your email confirmation. Now you can login your account.'
+		message = 'Dziękujemy za potwierdzenie adresu skrzynki odbiorczej. Twoje konto zostało aktywowane.'
 	else:
-		message = 'Activation link is invalid!'
+		message = 'Nieprawidłowy URL aktywacyjny!'
 	return render(request, 'app/user/signup_confirm.html', {'user': user, 'message': message})
 
 def index(request):

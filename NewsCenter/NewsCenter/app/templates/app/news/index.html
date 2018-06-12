@@ -16,10 +16,14 @@
 
 <br/>
 
-<div class="row">
-	<div class="col-sm-3">
-		<button onclick="window.location='{% url 'add' %}'" type="button" class="btn btn-primary">Dodaj</button>
+{% if user.role == 'moderator' or user.role == 'administrator' %}
+
+	<div class="row">
+		<div class="col-sm-3">
+			<button onclick="window.location='{% url 'add' %}'" type="button" class="btn btn-primary">Dodaj</button>
+		</div>
 	</div>
-</div>
+
+{% endif %}
 
 {% endblock %}

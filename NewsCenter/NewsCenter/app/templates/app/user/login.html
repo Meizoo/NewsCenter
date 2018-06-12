@@ -12,16 +12,16 @@
             <form method="post" novalidate>
               {% csrf_token %}
               {% include 'app/partial/form.html' %}
-              <button type="submit" class="btn btn-primary btn-block">Log in</button>
+              <button type="submit" class="btn btn-primary btn-block">Zaloguj</button>
             </form>
           </div>
           <div class="card-footer text-muted text-center">
-            New to News Center? <a href="{% url 'signup' %}">Sign up</a>
+            Nowy u¿ytkownik? <a href="{% url 'signup' %}">Zarejestruj siê</a>
           </div>
         </div>
         <div class="text-center py-2">
           <small>
-            <a href="{% url 'password_reset' %}" class="text-muted">Forgot your password?</a>
+            <a href="{% url 'password_reset' %}" class="text-muted">Zapomnia³eœ has³a?</a>
           </small>
         </div>
       </div>

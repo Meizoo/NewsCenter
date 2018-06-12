@@ -11,13 +11,17 @@
 			Szczegóły
 		</button>
 
-		<button onclick="window.location='{% url 'edit'  id=j.id %}'" type="button" class="btn btn-primary">
-			Edytuj
-		</button>
+		{% if user.role == 'moderator' or user.role == 'administrator' %}
 
-		<button onclick="window.location='{% url 'delete'  id=j.id %}'" type="button" class="btn btn-primary">
-			Usuń
-		</button>
+			<button onclick="window.location='{% url 'edit'  id=j.id %}'" type="button" class="btn btn-primary">
+				Edytuj
+			</button>
+
+			<button onclick="window.location='{% url 'delete'  id=j.id %}'" type="button" class="btn btn-primary">
+				Usuń
+			</button>
+
+		{% endif %}
 
 		<br />
 

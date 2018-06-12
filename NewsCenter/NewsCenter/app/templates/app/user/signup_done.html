@@ -1,0 +1,8 @@
+{% extends "app/shared/layout.html" %}
+
+{% block content %}
+  <br />
+  <h2>{{ message }}</h2>
+  <h3>Activation link were sent to email: {{ user.email }}</h3>
+  <button onclick="window.location='{% url 'home' %}'" class="btn btn-primary">Powrot</button>
+{% endblock %}

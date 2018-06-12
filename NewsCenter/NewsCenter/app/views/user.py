@@ -45,7 +45,8 @@ def signup(request):
 			})
 			to_email = form.cleaned_data.get('email')
 			EmailMessage(mail_subject, message, to=[to_email]).send()
-			return HttpResponse('Please confirm your email address to complete the registration')
+			message2 = 'Please confirm your email address to complete the registration'
+			return render(request, 'app/user/signup_done.html', {'user': user, 'message': message2})
 	else:
 		form = SignupForm()
 	return render(request, 'app/user/signup.html', {'title' : 'signup', 'form': form })
@@ -60,9 +61,10 @@ def activate(request, uidb64, token):
 		user.is_active = True
 		user.save()
 		login(request, user)
-		return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+		message = 'Thank you for your email confirmation. Now you can login your account.'
 	else:
-		return HttpResponse('Activation link is invalid!')
+		message = 'Activation link is invalid!'
+	return render(request, 'app/user/signup_confirm.html', {'user': user, 'message': message})
 
 def index(request):
 	"""Renders the users"""

@@ -10,6 +10,8 @@ from django.http import HttpRequest,Http404,HttpResponseRedirect
 from django.template import RequestContext
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
+from django import forms
+from captcha.fields import CaptchaField
 
 from app.calendar_pattern import *
 

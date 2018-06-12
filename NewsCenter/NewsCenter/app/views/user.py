@@ -31,6 +31,7 @@ def signup(request):
 	if request.method == 'POST':
 		form = SignupForm(request.POST)
 		if form.is_valid():
+			human = True
 			user = form.save(commit=False)
 			user.is_active = False
 			user.save()

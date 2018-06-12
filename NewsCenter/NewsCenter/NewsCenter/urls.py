@@ -52,7 +52,7 @@ urlpatterns = [
     url(r'^reset/complete/$',
         auth_views.PasswordResetCompleteView.as_view(template_name='app/user/pswd_reset/password_reset_complete.html'),
         name='password_reset_complete'),
-
+	url(r'^captcha/', include('captcha.urls')),
 	path('logout',
 		django.contrib.auth.views.logout,
 		{

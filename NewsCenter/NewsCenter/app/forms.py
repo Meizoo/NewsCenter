@@ -7,6 +7,8 @@ from django.contrib.auth.forms import AuthenticationForm,UserCreationForm, UserC
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.forms.widgets import *
+from captcha.fields import CaptchaField
+
 
 class SignupForm(UserCreationForm):
 	email   = forms.EmailField(max_length=200, help_text='Required', 
@@ -29,6 +31,7 @@ class SignupForm(UserCreationForm):
 								'class': 'form-control',
 								'placeholder': 'Age'
 								}))
+	captcha = CaptchaField()
 	password1 = forms.CharField(widget=forms.PasswordInput({'class': 'form-control', 'placeholder': 'Password'}))
 	password2 = forms.CharField(widget=forms.PasswordInput({'class': 'form-control', 'placeholder': 'Password confirmation'}))
 	#state   = forms.IntegerField(choices=STATE)

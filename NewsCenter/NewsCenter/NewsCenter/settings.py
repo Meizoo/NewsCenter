@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 	'app',
 	# Add your apps here to enable them
 	'widget_tweaks',
+	'captcha',
 	'django.contrib.admin',
 	'django.contrib.auth',
 	'django.contrib.contenttypes',

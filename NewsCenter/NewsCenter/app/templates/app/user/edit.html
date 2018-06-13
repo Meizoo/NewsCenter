@@ -6,10 +6,10 @@
 	<br />
 	<div class="row">
 		<div >
-			<h1>Edit Details</h1>
+			<h1>Edycja profilu</h1>
 		</div>
 		<div >
-			<button onclick="window.location='{% url 'details' %}'" type="button" class="btn btn-primary">Back</button>
+			<button onclick="window.location='{% url 'details' %}'" type="button" class="btn btn-primary">Wróć</button>
 		</div>
 	</div>
 </div>
@@ -18,7 +18,7 @@
 	<form action="update" method="post">
 		{% csrf_token %} 
 			{{ user.as_p }}
-			<button type="submit" class="btn btn-primary">Confirm</button>
+			<button type="submit" class="btn btn-primary">Potwierdź</button>
 	</form>
 </div>
 {% endblock %}

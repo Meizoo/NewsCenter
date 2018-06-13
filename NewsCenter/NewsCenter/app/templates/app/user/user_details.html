@@ -7,12 +7,12 @@
 	<table class="table table-light">
 	<thead class="thead-dark">
 		<tr>
-			<th scope="col"> Username:    </th> 
-			<th scope="col"> Email:   </th> 
-			<th scope="col"> Name: </th> 
-			<th scope="col"> Surname: </th> 
-			<th scope="col"> Age: </th> 
-			<th scope="col"> Access: </th> 
+			<th scope="col"> Nazwa użytkownika    </th> 
+			<th scope="col"> Email   </th> 
+			<th scope="col"> Imie </th> 
+			<th scope="col"> Nazwisko </th> 
+			<th scope="col"> Wiek </th> 
+			<th scope="col"> Dostęp </th> 
 		</tr>
 	</thead>
 	<tbody>
@@ -22,10 +22,10 @@
 			<td scope="col"> {{ user.name }} </td>
 			<td scope="col"> {{ user.surname }} </td>
 			<td scope="col"> {{ user.age }} </td>
-			<td scope="col"> {{ user.age }} </td>
+			<td scope="col"> {{ user. }} </td>
 		</tr>
 	</tbody>
 	</table>
-			<button	onclick="window.location = '{% url 'edit' %}'" class="btn btn-primary" scope="col">Edit</button>
+			<button	onclick="window.location = '{% url 'edit' %}'" class="btn btn-primary" scope="col">Edycja</button>
 </div>
 {% endblock %}

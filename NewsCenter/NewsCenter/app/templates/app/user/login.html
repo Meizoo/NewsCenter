@@ -8,7 +8,7 @@
       <div class="col-lg-4 col-md-6 col-sm-8">
         <div class="card">
           <div class="card-body">
-            <h3 class="card-title">Log in</h3>
+            <h3 class="card-title">Zaloguj siƒô</h3>
             <form method="post" novalidate>
               {% csrf_token %}
               {% include 'app/partial/form.html' %}
@@ -16,12 +16,12 @@
             </form>
           </div>
           <div class="card-footer text-muted text-center">
-            Nowy uøytkownik? <a href="{% url 'signup' %}">Zarejestruj siÍ</a>
+            Nowy u≈ºytkownik? <a href="{% url 'signup' %}">Zarejestruj siƒô</a>
           </div>
         </div>
         <div class="text-center py-2">
           <small>
-            <a href="{% url 'password_reset' %}" class="text-muted">Zapomnia≥eú has≥a?</a>
+            <a href="{% url 'password_reset' %}" class="text-muted">Zapomnia≈Çe≈õ has≈Ça?</a>
           </small>
         </div>
       </div>
@@ -37,3 +37,4 @@
 <script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
 
 {% endblock %}
+#}

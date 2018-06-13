@@ -44,13 +44,14 @@ from django.utils.translation import activate
 def index(request):
 	"""Renders the articles"""
 	assert isinstance(request, HttpRequest)
-	return render(request, 'app/news/index.html', 
-	{
-		'news': ArticleListView,
-		'title': _('Wiadomości'),
-		'year':datetime.now().year,
-		'user' : find_profile(request)
-	})
+	if not request.user.is_authenticated():
+		return render(request, 'app/news/index.html', 
+		{
+			'news': ArticleListView,
+			'title': _('Wiadomości'),
+			'year':datetime.now().year,
+			'user' : find_profile(request)
+		})
 
 def details(request, pk):
 	"""Renders the article's details"""
@@ -70,7 +71,7 @@ def details(request, pk):
 				id_news = id_news
 			).save()
 			comment.save()
-			return HttpResponseRedirect('/news')
+			#return HttpResponseRedirect('/news/id_news')
 	else:
 		form = EntryForms()	
 	return render(request, 'app/news/details.html', {
@@ -87,16 +88,16 @@ def declare(request, pk):
 
 	bool = toggle_item(find_declarations(id_user, id_news), id_user, id_news, Declaration.objects)
 
-	#if declaration_to_str(bool).message == 'Declared':
-	#	current_site = get_current_site(request)
-	#	mail_subject = 'Zadeklarowano udział w spotkaniu'
-	#	message = render_to_string('app/user/declared_email.html', {
-	#		'user'   : id_user,
-	#		'domain' : current_site.domain,
-	#		'news'   : id_news
-	#	})
-	#	to_email = id_user.email
-	#	EmailMessage(mail_subject, message, to=[to_email]).send()
+	if declaration_to_str(bool) == 'Wezmę udział':
+		current_site = get_current_site(request)
+		mail_subject = 'Zadeklarowano udział w spotkaniu'
+		message = render_to_string('app/user/declared_email.html', {
+			'user'   : id_user,
+			'domain' : current_site.domain,
+			'news'   : id_news
+		})
+		to_email = id_user.email
+		EmailMessage(mail_subject, message, to=[to_email]).send()
 	return render(request, 'app/news/details.html', {
 		'new': id_news, 
 		'comments' : find_comments(pk),
@@ -119,7 +120,7 @@ def interest(request, pk):
 	})
 
 def add(request):
-	"""Adds article"""
+	"""Adds article"""	
 	if not is_mod(request):
 		return Http404()
 

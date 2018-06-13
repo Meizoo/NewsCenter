@@ -1,0 +1,12 @@
+body {
+	padding-top: 0px;
+}
+
+.wrap {
+	word-wrap: normal;
+}
+
+.hor_input {
+	display: inline;
+	width: 50%;
+}

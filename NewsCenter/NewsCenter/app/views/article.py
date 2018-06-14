@@ -44,26 +44,37 @@ from django.utils.translation import activate
 def index(request):
 	"""Renders the articles"""
 	assert isinstance(request, HttpRequest)
-	if not request.user.is_authenticated:
+	if request.user.is_authenticated:
 		return render(request, 'app/news/index.html', 
 		{
 			'news': ArticleListView,
 			'title': _('Wiadomości'),
 			'year':datetime.now().year,
-			'user' : find_profile(request)
+			'user' : find_profile(request),
+			'auth' : 'yes'
 		})
 	return render(request, 'app/news/index.html', 
-		{
-			'news': ArticleListView,
-			'title': _('Wiadomości'),
-			'year':datetime.now().year,
-			'user' : find_profile(request)
-		})
+	{
+		'news': ArticleListView,
+		'title': _('Wiadomości'),
+		'year':datetime.now().year,
+		'auth' : 'no' 
+	})
 
 def details(request, pk):
 	"""Renders the article's details"""
-	id_user = find_user(request)
 	id_news = find_news(pk)
+
+	if not request.user.is_authenticated:
+		return render(request, 'app/news/index.html', 
+		{
+			'new': id_news, 
+			'comments' : find_comments(pk),
+			'declaration' : declaration_to_str(False),
+			'interested' : interest_to_str(False),
+			'auth' : 'no' 
+		})
+	id_user = find_user(request)
 
 	if request.method == 'POST':
 		form = CommentForms(request.POST)
@@ -85,13 +96,23 @@ def details(request, pk):
 		'new': id_news, 
 		'comments' : find_comments(pk),
 		'declaration' : declaration_to_str(not is_none_or_empty(find_declarations(id_user, id_news))),
-		'interested' : interest_to_str(not is_none_or_empty(find_interested(id_user, id_news)))
+		'interested' : interest_to_str(not is_none_or_empty(find_interested(id_user, id_news))),
+		'auth' : 'yes' 
 	})
 
 def declare(request, pk):
 	"""Creates declaration model for given article for current user. """
-	id_user = find_user(request)
 	id_news = find_news(pk)
+
+	if not request.user.is_authenticated:
+		return render(request, 'app/news/details.html', {
+			'new': id_news, 
+			'comments' : find_comments(pk),
+			'declaration' : declaration_to_str(False),
+			'interested' : interest_to_str(False)
+		})
+
+	id_user = find_user(request)
 
 	bool = toggle_item(find_declarations(id_user, id_news), id_user, id_news, Declaration.objects)
 

@@ -1,18 +1,16 @@
 {% extends 'app/shared/layout.html'%}
 
 {% block content %}
-
+{% load widget_tweaks %}
 <div class="container form-group">
 	<br />
 	<div class="row">
 		<div >
-			<h1>Add News</h1>
-		</div>
-		<div >
-			<button onclick="window.location='{% url 'news' %}'" type="button" class="btn btn-primary">Back</button>
+			<h1>Dodaj ogłoszenie</h1>
 		</div>
 	</div>
 </div>
+
 
 <div class="container form-group">
 	<form method="post">
@@ -20,10 +18,11 @@
 		{% for field in form %}
 			{{ field.errors }}
 			<label>{{ field.label }}</label>
-			<input placeholder="{{ field.label }}" class="form-control" name="{{ field.name }}" />
+			{{ field }}
 			<br />
 		{% endfor %}
-	<button type="submit" class="btn btn-primary">Confirm</button>
+		<button type="submit" class="btn btn-primary">Potwierdź</button>
+		<button onclick="window.location='{% url 'news' %}'" type="button" class="btn btn-primary">Wróć</button>
 	</form>
 </div>
 

@@ -11,7 +11,7 @@ class UserProfile(models.Model):
 
 class News(models.Model):
 	title       = models.CharField(max_length = 32)
-	date        = models.DateTimeField()
+	date        = models.DateField()
 	description = models.TextField()
 	address     = models.CharField(max_length = 32)
 	created     = models.DateTimeField(auto_now_add=True)

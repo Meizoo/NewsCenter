@@ -44,8 +44,15 @@ from django.utils.translation import activate
 def index(request):
 	"""Renders the articles"""
 	assert isinstance(request, HttpRequest)
-	if not request.user.is_authenticated():
+	if not request.user.is_authenticated:
 		return render(request, 'app/news/index.html', 
+		{
+			'news': ArticleListView,
+			'title': _('Wiadomości'),
+			'year':datetime.now().year,
+			'user' : find_profile(request)
+		})
+	return render(request, 'app/news/index.html', 
 		{
 			'news': ArticleListView,
 			'title': _('Wiadomości'),

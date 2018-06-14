@@ -3,6 +3,6 @@
 {% block content %}
   <br />
   <h2>{{ message }}</h2>
-  <h3>Activation link were sent to email: {{ user.email }}</h3>
-<button onclick="window.location='{% url 'home' %}'" class="btn btn-primary">Powrot</button>
+  <h3>Link aktywacyjny został wysłany na podany adres email: {{ user.email }}</h3>
+<button onclick="window.location='{% url 'home' %}'" class="btn btn-primary">Powrót</button>
 {% endblock %}

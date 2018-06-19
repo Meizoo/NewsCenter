@@ -44,21 +44,14 @@ from django.utils.translation import activate
 def index(request):
 	"""Renders the articles"""
 	assert isinstance(request, HttpRequest)
-	if request.user.is_authenticated:
-		return render(request, 'app/news/index.html', 
-		{
-			'news': ArticleListView,
-			'title': _('Wiadomości'),
-			'year':datetime.now().year,
-			'user' : find_profile(request),
-			'auth' : 'yes'
-		})
 	return render(request, 'app/news/index.html', 
 	{
 		'news': ArticleListView,
 		'title': _('Wiadomości'),
-		'year':datetime.now().year,
-		'auth' : 'no' 
+		'year' : datetime.now().year,
+		'auth': is_logged(request),
+		'admin' : is_admin(request),
+		'date' : datetime.now().date()
 	})
 
 def details(request, pk):
@@ -70,7 +63,8 @@ def details(request, pk):
 		{
 			'new': id_news, 
 			'comments' : find_comments(pk),
-			'auth' : 'no' 
+			'auth': 'no',
+			'admin' : is_admin(request)
 		})
 	id_user = find_user(request)
 
@@ -95,7 +89,9 @@ def details(request, pk):
 		'comments' : find_comments(pk),
 		'declaration' : declaration_to_str(not is_none_or_empty(find_declarations(id_user, id_news))),
 		'interested' : interest_to_str(not is_none_or_empty(find_interested(id_user, id_news))),
-		'auth' : 'yes' 
+		'auth' : 'yes',
+		'expired' : id_news.date < datetime.now().date(),
+		'admin' : is_admin(request)
 	})
 
 def declare(request, pk):
@@ -107,7 +103,9 @@ def declare(request, pk):
 			'new': id_news, 
 			'comments' : find_comments(pk),
 			'declaration' : declaration_to_str(False),
-			'interested' : interest_to_str(False)
+			'interested' : interest_to_str(False),
+			'auth': is_logged(request),
+			'admin' : is_admin(request)
 		})
 
 	id_user = find_user(request)
@@ -118,9 +116,10 @@ def declare(request, pk):
 		current_site = get_current_site(request)
 		mail_subject = 'Zadeklarowano udział w spotkaniu'
 		message = render_to_string('app/user/declared_email.html', {
-			'user'   : id_user,
 			'domain' : current_site.domain,
-			'news'   : id_news
+			'news'   : id_news,
+			'auth': is_logged(request),
+			'admin' : is_admin(request),
 		})
 		to_email = id_user.email
 		EmailMessage(mail_subject, message, to=[to_email]).send()
@@ -128,7 +127,9 @@ def declare(request, pk):
 		'new': id_news, 
 		'comments' : find_comments(pk),
 		'declaration' : declaration_to_str(bool),
-		'interested' : interest_to_str(not is_none_or_empty(find_interested(id_user, id_news)))
+		'interested' : interest_to_str(not is_none_or_empty(find_interested(id_user, id_news))),
+		'auth': is_logged(request),
+		'admin' : is_admin(request)
 	})
 
 def interest(request, pk):
@@ -142,7 +143,9 @@ def interest(request, pk):
 		'new': id_news, 
 		'comments' : find_comments(pk),
 		'declaration' : declaration_to_str(not is_none_or_empty(find_declarations(id_user, id_news))),
-		'interested' : interest_to_str(bool)
+		'interested' : interest_to_str(bool),
+		'auth': is_logged(request),
+		'admin' : is_admin(request)
 	})
 
 def add(request):

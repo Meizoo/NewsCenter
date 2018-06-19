@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 {% load static %}
 
@@ -38,11 +38,13 @@
 						Strona główna
 					</a>
 				</li>
+				{% if False %}
 				<li class="nav-item {% if title == 'O nas' %} active {% endif %}">
 					<a class="nav-link" href="{% url 'about' %}">
 						O nas
 					</a>
 				</li>
+				{% endif %}
 				<li class="nav-item {% if title == 'Kontakt' %} active {% endif %}">
 					<a class="nav-link" href="{% url 'contact' %}">
 						Kontakt
@@ -53,7 +55,7 @@
 						Wiadomości
 					</a>
 				</li>
-				{% if auth == 'yes' %}
+				{% if admin %}
 					<li class="nav-item {% if title == 'Użytkownicy' %} active {% endif %}">
 						<a class="nav-link" href="{% url 'user' %}">
 							Użytkownicy

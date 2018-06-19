@@ -28,13 +28,29 @@ def index(request):
 	"""Renders the home page."""
 	assert isinstance(request, HttpRequest)
 
+	art = News.objects.filter(date__gt=date.today()).order_by("-date")
+
+	if len(art) == 0:
+		return render(
+			request,
+			'app/home/index.html',
+			{
+				'title': _('Brak nadchodzących wydarzeń'),
+				'year':datetime.now().year,
+				'auth': is_logged(request),
+				'article' : None,
+				'admin' : is_admin(request)
+			}
+		)
 	return render(
 		request,
 		'app/home/index.html',
 		{
-			'title': _('Strona główna'),
+			'title': _('Nadchodzące wydarzenie'),
 			'year':datetime.now().year,
-			'auth': is_logged(request)
+			'auth': is_logged(request),
+			'article' : art[0],
+			'admin' : is_admin(request)
 		}
 	)
 
@@ -47,7 +63,8 @@ def contact(request):
 		{
 			'title': _('Kontakt'),
 			'year':datetime.now().year,
-			'auth': is_logged(request)
+			'auth': is_logged(request),
+			'admin' : is_admin(request)
 		}
 	)
 
@@ -60,6 +77,7 @@ def about(request):
 		{
 			'title': _('O nas'),
 			'year':datetime.now().year,
-			'auth': is_logged(request)
+			'auth': is_logged(request),
+			'admin' : is_admin(request)
 		}
 	)

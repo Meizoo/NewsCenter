@@ -5,7 +5,7 @@
 <table class="table">
 	{% for i in news.querytable %}
 		<tr>
-			{% for j in i %}
+			{% for article in i %}
 				<th>
 					{% include 'app/partial/articlepartial.html' %}
 				</th>	

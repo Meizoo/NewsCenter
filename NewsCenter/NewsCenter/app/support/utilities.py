@@ -16,7 +16,15 @@ def find_user(request):
 	return User.objects.get(id=request.user.id)
 
 def find_profile(request):
-	return UserProfile.objects.get(user=request.user)
+	try:
+		return UserProfile.objects.get(user=request.user)
+	except:
+		return None
+
+def is_admin(request):
+	if find_profile(request) is None:
+		return False
+	return is_mod(request)
 
 def is_mod(request):
 	user = UserProfile.objects.get(user=request.user)

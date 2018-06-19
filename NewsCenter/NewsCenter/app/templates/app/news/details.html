@@ -4,7 +4,9 @@
 
 <br />
 
-<h1> {{new.title}} </h1>
+<div {% if expired == True %} class="gray" {% endif %}>
+	<h1> {{new.title}} </h1>
+</div>
 
 <div class="table-responsive-sm">
 	<table class="table table-light">
@@ -34,11 +36,13 @@
 	
 <br>
 
-<form method="post">
-	<input id="comment" class="form-control hor_input" type="text" name="comment" value="Comment..." />
-	{% csrf_token %} 
-	<button type="submit" class="btn btn-primary" style="margin-bottom:8px;">Wyślij</button>
-</form>
+{% if auth == 'yes' %}
+	<form method="post">
+		<input id="comment" class="form-control hor_input" type="text" name="comment" value="Comment..." />
+		{% csrf_token %} 
+		<button type="submit" class="btn btn-primary" style="margin-bottom:8px;">Wyślij</button>
+	</form>
+{% endif %}
 
 <div class="container">
 	<table class="table table-borderless table-light">

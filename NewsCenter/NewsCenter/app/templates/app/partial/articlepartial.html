@@ -1,30 +1,32 @@
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-		{{ j.title }} - {{ j.date}}
+<div class="card">
+	<div class="card-header {% if date > article.date %} gray {% endif %}">
+		<div class="card-title">
+			{{ article.title }} - {{ article.date}}
+		</div>
 	</div>
-	<div class="panel-body">
+	<div class="card-body">
+		<div class="card-text">
+			{{ article.description|truncatechars:24 }}
+		</div>
 
 		<br />
 
-		<button onclick="window.location='{% url 'details' pk=j.id %}'" type="button" class="btn btn-primary">
+		<button onclick="window.location='{% url 'details' pk=article.id %}'" type="button" class="btn btn-primary">
 			Szczegóły
 		</button>
 
-		{% if user.role == 'moderator' or user.role == 'administrator' %}
+		{% if admin %}
 
-			<button onclick="window.location='{% url 'edit'  id=j.id %}'" type="button" class="btn btn-primary">
+			<button onclick="window.location='{% url 'edit'  id=article.id %}'" type="button" class="btn btn-primary">
 				Edytuj
 			</button>
 
-			<button onclick="window.location='{% url 'delete'  id=j.id %}'" type="button" class="btn btn-primary">
+			<button onclick="window.location='{% url 'delete'  id=article.id %}'" type="button" class="btn btn-primary">
 				Usuń
 			</button>
 
 		{% endif %}
 
-		<br />
-
-		 {{ j.description|truncatechars:24 }}
 	</div>
 </div>

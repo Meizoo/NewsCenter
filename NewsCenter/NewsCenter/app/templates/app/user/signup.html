@@ -1,13 +1,17 @@
 {% extends "app/shared/layout.html" %}
 
 {% block content %}
-  <h2>Zarejestruj się</h2>
+
+	<br />
+	
+	<div class="alert alert-info">
+		<h2>Zarejestruj się</h2>
+	</div>
+
   <form method="post">
 	{% csrf_token %}
 	  {% for field in form %}
 	  <p>
-		<label>{{ field.label_tag }}</label>
-		<br />
 		
 		{{ field }}
 	

@@ -37,7 +37,9 @@ def comments(request):
 	return render(request, 'app/comments.html', 
 	{
 		'title': _('Komentarze'),
+		'auth': is_logged(request),
 		'year':datetime.now().year,
+		'admin' : is_admin(request),
 		'collection': Comment.objects.all()
 	})
 
@@ -46,5 +48,8 @@ def organizers(request):
 	return render(request, 'app/organizers.html', 
 	{
 		'title' : _('Organizatorzy'),
+		'auth': is_logged(request),
+		'year':datetime.now().year,
+		'admin' : is_admin(request),
 		'collection' : Association.objects.all() 
 	})

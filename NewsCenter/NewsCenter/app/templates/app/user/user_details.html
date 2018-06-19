@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2> Szczegóły użytkownika </h2>
+<h2> Szczegóły profilu </h2>
 <div class="table-responsive-sm">
 	<table class="table table-light">
 	<thead class="thead-dark">
@@ -17,12 +17,12 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td scope="col"> {{ user.username }} </td>
-			<td scope="col"> {{ user.email }} </td>
-			<td scope="col"> {{ user.name }} </td>
-			<td scope="col"> {{ user.surname }} </td>
-			<td scope="col"> {{ user.age }} </td>
-			<td scope="col"> {{ user. }} </td>
+			<td scope="col"> {{ user.user.username }} </td>
+			<td scope="col"> {{ user.user.email }} </td>
+			<td scope="col"> {{ user.user.name }} </td>
+			<td scope="col"> {{ user.user.surname }} </td>
+			<td scope="col"> {{ user.user.age }} </td>
+			<td scope="col"> {{ user.role }} </td>
 		</tr>
 	</tbody>
 	</table>

@@ -129,7 +129,6 @@
     <Content Include="app\static\app\scripts\respond.js" />
     <Content Include="app\static\app\scripts\respond.min.js" />
     <Content Include="app\templates\admin\base_site.html" />
-    <Content Include="app\templates\app\captchatest.html" />
     <Content Include="app\templates\app\comments.html" />
     <Content Include="app\templates\app\home\about.html" />
     <Content Include="app\templates\app\home\contact.html" />
@@ -139,7 +138,6 @@
     <Content Include="app\templates\app\news\details.html" />
     <Content Include="app\templates\app\news\edit.html" />
     <Content Include="app\templates\app\news\index.html" />
-    <Content Include="app\templates\app\news\news.html" />
     <Content Include="app\templates\app\organizers.html" />
     <Content Include="app\templates\app\partial\articlepartial.html" />
     <Content Include="app\templates\app\partial\form.html" />

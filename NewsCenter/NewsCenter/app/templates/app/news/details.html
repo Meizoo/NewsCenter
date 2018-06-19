@@ -17,6 +17,7 @@
 						<button onclick="window.location='{% url 'interest' pk=new.id %}'" class="btn btn-primary">{{ interested }}</button> 
 					{% endif %}
 				{% endif %}
+				<button onclick="window.location='{% url 'news' %}'" class="btn btn-primary">Powrót</button>
 			</td>
 			<td scope="col"> Data rozpoczęcia: {{ new.date|date:"Y m d D" }} </td>
 			<td scope="col"> Adres: {{ new.address }} </td>
@@ -36,8 +37,7 @@
 <form method="post">
 	<input id="comment" class="form-control hor_input" type="text" name="comment" value="Comment..." />
 	{% csrf_token %} 
-	<button type="submit" class="btn btn-primary">Wyślij</button>
-	<button onclick="window.location='{% url 'news' %}'" class="btn btn-primary">Powrót</button>
+	<button type="submit" class="btn btn-primary" style="margin-bottom:8px;">Wyślij</button>
 </form>
 
 <div class="container">

@@ -1,24 +1,45 @@
-{% extends 'app/shared/layout.html' %}
+{% extends 'app/shared/layout.html'%}
 
 {% block content %}
-
 <div class="container form-group">
 	<br />
 	<div class="row">
 		<div >
-			<h1>Edycja profilu</h1>
-		</div>
-		<div >
-			<button onclick="window.location='{% url 'details' %}'" type="button" class="btn btn-primary">Wróć</button>
+			<h1>Edycja</h1>
 		</div>
 	</div>
 </div>
 
 <div class="container form-group">
-	<form action="update" method="post">
+	<form action="/update" method="post">
 		{% csrf_token %} 
-			{{ user.as_p }}
-			<button type="submit" class="btn btn-primary">Potwierdź</button>
+		<label for="username">
+			Nazwa użytkownika: 
+			<input type="text" name="username" id="username" class="form-control" value="{{ user.user.username }}" placeholder=" {{ user.user.username }}"/>
+		</label>
+		<br />
+		<label for="name">
+			Imie:
+			<input type="text" value="{{ user.user.name }}" name="name"  placeholder="{{ user.user.name }}" class="form-control" />
+		</label>
+		<br />
+		<label for="surname">
+			Nazwisko: 
+			<input type="text" name="surname" id="surname" class="form-control" value="{{ user.user.surname}}" placeholder=" {{ user.user.surname}}"/>
+		</label>
+		<br />
+			<label for="age">
+				Wiek: 
+				<input type="text" name="age" id="age" class="form-control" value="{{ user.user.age}}" placeholder=" {{ user.user.age}}"/>
+			</label>
+		<br />
+			<label for="email">
+				Email: 
+				<input type="email" name="email" id="email" class="form-control" value="{{ user.user.email}}" placeholder=" {{ user.user.email}}"/>
+			</label>
+		<br />
+		<button type="submit" class="btn btn-primary">Zatwierdź</button>
+		<button onclick="window.location='{% url 'home' %}'" type="button" class="btn btn-primary">Powrót</button>
 	</form>
 </div>
 {% endblock %}

@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.forms.widgets import *
 from captcha.fields import CaptchaField
-
+from app import models
 
 class SignupForm(UserCreationForm):
 	email   = forms.EmailField(max_length=200, help_text='Required', 
@@ -63,10 +63,15 @@ class BootstrapAuthenticationForm(AuthenticationForm):
 									'placeholder':'Password'}))
 
 class EntryForms(forms.Form):
-	title	   = forms.CharField(max_length=32)
+	title	   = forms.CharField(max_length=32,widget=forms.TextInput({
+									'class': 'form-control',
+									'placeholder': 'Title'}))
 	date= forms.DateTimeField(widget=forms.DateTimeInput({'class': 'form-control'}))
-	description = forms.CharField(widget = forms.Textarea)
-	address	 = forms.CharField(max_length = 32)
+	description = forms.CharField(widget = forms.Textarea({'class': 'form-control',
+									'placeholder': 'Description'}))
+	address	 = forms.CharField(max_length = 32,widget=forms.TextInput({
+									'class': 'form-control',
+									'placeholder': 'Address'}))	
 
 class CommentForms(forms.Form):
 	comment = forms.CharField(max_length=128)

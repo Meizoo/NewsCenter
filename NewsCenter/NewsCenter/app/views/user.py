@@ -24,6 +24,12 @@ from ..models import *
 from ..forms import EntryForms,SignupForm, EditProfileForm
 from ..token_generator import account_activation_token
 
+
+from app import support
+from app.support import render_structs, utilities
+from app.support.render_structs import *
+from app.support.utilities import *
+
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import activate
 
@@ -74,7 +80,7 @@ def index(request):
 	})
 
 def details(request):
-	id_user = User.objects.get(id=request.user.id)
+	id_user = UserProfile.objects.get(id=request.user.id)
 	is_input = False
 	submitbutton= request.POST.get('submit')
 	if submitbutton:
@@ -82,20 +88,26 @@ def details(request):
 	return render(request, 'app/user/user_details.html',{'user': id_user, 'is_input': is_input, 'submitbutton': submitbutton})
 
 def edit(request):
-	id_user = EditProfileForm(instance=request.user)
-	return render(request, 'app/user/edit.html',{'user': id_user})
+	"""Edits article of given id"""
+	if not is_mod(request):
+		return Http404()
 
-def update(request):
+	user = find_profile(request)
+	return render(request,'app/user/edit.html', {'news': user})
+
+def update(request, id):
 	"""Updates article of given id"""
-	
+	if not is_mod(request):
+		return Http404()
+
+	user = find_profile(request)
+
 	if request.method == 'POST':
-		id_user = EditProfileForm(request.POST,instance=request.user)
-		#user.username = request.POST['username'];
-		#user.email = request.POST['email'];
-		#user.name = request.POST['name'];
-		#user.surname = request.POST['surname'];
-		#user.age = request.POST['age'];
-		user.save()
-		return HttpResponseRedirect('/user_details')
+		user.user.username = request.POST['username'];
+		user.user.name = request.POST['name'];
+		user.user.surname = request.POST['surname'];
+		user.user.age = request.POST['age'];
+		user.user.email = request.POST['email'];
+		user.user.save()
+		return HttpResponseRedirect('/news')
 	return HttpResponseRedirect('/edit')
-	

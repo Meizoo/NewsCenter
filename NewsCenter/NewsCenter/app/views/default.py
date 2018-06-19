@@ -19,6 +19,11 @@ from ..forms import EntryForms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import activate
 
+from app import support
+from app.support import render_structs, utilities
+from app.support.render_structs import *
+from app.support.utilities import *
+
 def index(request):
 	"""Renders the home page."""
 	assert isinstance(request, HttpRequest)
@@ -29,6 +34,7 @@ def index(request):
 		{
 			'title': _('Strona główna'),
 			'year':datetime.now().year,
+			'auth': is_logged(request)
 		}
 	)
 
@@ -41,6 +47,7 @@ def contact(request):
 		{
 			'title': _('Kontakt'),
 			'year':datetime.now().year,
+			'auth': is_logged(request)
 		}
 	)
 
@@ -53,5 +60,6 @@ def about(request):
 		{
 			'title': _('O nas'),
 			'year':datetime.now().year,
+			'auth': is_logged(request)
 		}
 	)

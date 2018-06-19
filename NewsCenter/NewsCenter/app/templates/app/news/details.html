@@ -11,9 +11,11 @@
 	<tbody>
 		<tr>
 			<td scope="col"> 
-				<button onclick="window.location='{% url 'declare' pk=new.id %}' " class="btn btn-primary">{{ declaration }}</button> 
-				{% if declaration == 'Wezmę udział' %}
-					<button onclick="window.location='{% url 'interest' pk=new.id %}'" class="btn btn-primary">{{ interested }}</button> 
+				{% if auth == 'yes' %}
+					<button onclick="window.location='{% url 'declare' pk=new.id %}' " class="btn btn-primary">{{ declaration }}</button> 
+					{% if declaration == 'Wezmę udział' %}
+						<button onclick="window.location='{% url 'interest' pk=new.id %}'" class="btn btn-primary">{{ interested }}</button> 
+					{% endif %}
 				{% endif %}
 			</td>
 			<td scope="col"> Data rozpoczęcia: {{ new.date|date:"Y m d D" }} </td>

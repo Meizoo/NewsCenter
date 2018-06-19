@@ -25,6 +25,12 @@ from ..listviews import ArticleListView
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import activate
 
+from app import support
+from app.support import render_structs, utilities
+from app.support.render_structs import *
+from app.support.utilities import *
+
+
 # Other
 def comments(request):
 	"""Renders all of the comments"""

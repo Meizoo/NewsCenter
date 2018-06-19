@@ -53,21 +53,23 @@
 						Wiadomości
 					</a>
 				</li>
-				<li class="nav-item {% if title == 'Użytkownicy' %} active {% endif %}">
-					<a class="nav-link" href="{% url 'user' %}">
-						Użytkownicy
-					</a>
-				</li>
-					<li class="nav-item {% if title == 'Komentarze' %} active {% endif %}">
-						<a class="nav-link" href="{% url 'comments' %}">
-							Komentarze
+				{% if auth == 'yes' %}
+					<li class="nav-item {% if title == 'Użytkownicy' %} active {% endif %}">
+						<a class="nav-link" href="{% url 'user' %}">
+							Użytkownicy
 						</a>
 					</li>
-				<li class="nav-item {% if title == 'Organizatorzy' %} active {% endif %}">
-					<a class="nav-link" href="{% url 'organizers' %}">
-						Organizatorzy
-					</a>
-				</li>
+						<li class="nav-item {% if title == 'Komentarze' %} active {% endif %}">
+							<a class="nav-link" href="{% url 'comments' %}">
+								Komentarze
+							</a>
+						</li>
+					<li class="nav-item {% if title == 'Organizatorzy' %} active {% endif %}">
+						<a class="nav-link" href="{% url 'organizers' %}">
+							Organizatorzy
+						</a>
+					</li>
+				{% endif %}
 			</ul>
 
 			{% include 'app/partial/loginpartial.html' %}

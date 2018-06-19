@@ -4,17 +4,17 @@ from app import models, forms
 
 from django.contrib.auth.models import User
 
-from django.utils.safestring import mark_safe
-from django.utils.encoding import force_bytes, force_text
-from django.utils.html       import conditional_escape
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.template         import RequestContext
-from django.contrib          import messages
-from django.http             import HttpRequest, Http404, HttpResponseRedirect,HttpResponse
-from django.template import RequestContext
-from django.template.loader import render_to_string
+from django.utils.safestring        import mark_safe
+from django.utils.encoding          import force_bytes, force_text
+from django.utils.html              import conditional_escape
+from django.utils.http              import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template                import RequestContext
+from django.contrib                 import messages
+from django.http                    import HttpRequest, Http404, HttpResponseRedirect,HttpResponse
+from django.template                import RequestContext
+from django.template.loader         import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import EmailMessage
+from django.core.mail               import EmailMessage
 
 from app.calendar_pattern import *
 
@@ -66,12 +66,10 @@ def details(request, pk):
 	id_news = find_news(pk)
 
 	if not request.user.is_authenticated:
-		return render(request, 'app/news/index.html', 
+		return render(request, 'app/news/details.html', 
 		{
 			'new': id_news, 
 			'comments' : find_comments(pk),
-			'declaration' : declaration_to_str(False),
-			'interested' : interest_to_str(False),
 			'auth' : 'no' 
 		})
 	id_user = find_user(request)

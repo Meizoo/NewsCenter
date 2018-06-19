@@ -46,3 +46,6 @@ def toggle_item(item, user, news, collection):
 		return True
 	item.delete()
 	return False	
+
+def is_logged(request):
+	return 'yes' if request.user.is_authenticated else 'no'

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 	# Add your apps here to enable them
 	'widget_tweaks',
 	'captcha',
+	'leaflet',
 	'django.contrib.admin',
 	'django.contrib.auth',
 	'django.contrib.contenttypes',
@@ -44,7 +45,12 @@ INSTALLED_APPS = [
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 ]
-
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': ( 53.1324886, 23.1688403),
+'DEFAULT_ZOOM': 14,
+'MIN_ZOOM': 3,
+'MAX_ZOOM': 18,
+}
 MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',

@@ -1,5 +1,5 @@
 {% extends "app/shared/layout.html" %}
-
+{% load leaflet_tags %}
 {% block content %}
 
 <br />
@@ -34,8 +34,9 @@
 	</p>
 </div>
 	
-<br>
-
+<br />
+{% leaflet_map "map" %}	
+<br />
 {% if auth == 'yes' %}
 	<form method="post">
 		<input id="comment" class="form-control hor_input" type="text" name="comment" value="Comment..." />

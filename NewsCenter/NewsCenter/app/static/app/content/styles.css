@@ -10,6 +10,14 @@ body {
 	display: inline;
 	width: 50%;
 }
+.leaflet-container { /* all maps */
+	width: 600px;
+	height: 400px;
+}
+
+#specialbigmap {
+	height: 800px;
+}
 
 .gray {
 	color: gray;

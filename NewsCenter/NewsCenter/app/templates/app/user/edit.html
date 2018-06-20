@@ -1,23 +1,18 @@
 {% extends 'app/shared/layout.html'%}
 
 {% block content %}
-<div class="container form-group">
-	<br />
-	<div class="row">
-		<div >
-			<h1>Edycja</h1>
-		</div>
-	</div>
+
+<br />
+
+<div class="alert alert-info">
+	<h2>Edycja profilu</h2>
 </div>
+
+<br />
 
 <div class="container form-group">
 	<form action="/update" method="post">
 		{% csrf_token %} 
-		<label for="username">
-			Nazwa użytkownika: 
-			<input type="text" name="username" id="username" class="form-control" value="{{ user.user.username }}" placeholder=" {{ user.user.username }}"/>
-		</label>
-		<br />
 		<label for="name">
 			Imie:
 			<input type="text" value="{{ user.user.name }}" name="name"  placeholder="{{ user.user.name }}" class="form-control" />

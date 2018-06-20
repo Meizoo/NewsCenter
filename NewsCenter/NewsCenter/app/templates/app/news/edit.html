@@ -1,40 +1,15 @@
 {% extends 'app/shared/layout.html'%}
 
 {% block content %}
-<div class="container form-group">
-	<br />
-	<div class="row">
-		<div >
-			<h1>Edycja</h1>
-		</div>
-	</div>
+
+<br />
+
+<div class="alert alert-info">
+	<h2>Edycja</h2>
 </div>
 
-<div class="container form-group">
-	<form action="/update/{{ news.id }}" method="post">
-		{% csrf_token %} 
-		<label for="title">
-			Tytuł: 
-			<input type="text" name="title" id="title" class="form-control" value="{{ news.title }}" placeholder=" {{ news.title }}"/>
-		</label>
-		<br />
-		<label for="date">
-			Data: 
-			<input type="datetime-local" value="{{ news.date|date:"Y-m-d" }}" name="date" onfocus="(this.type='{{ news.date }}')" placeholder="{{ news.date }}" class="form-control" />
-		</label>
-		<br />
-		<label for="description">
-			Opis: 
-			<input type="text" name="description" id="descrpition" class="form-control" value="{{ news.description}}" placeholder=" {{ news.description }}"/>
-		</label>
-		<br />
-			<label for="address">
-				Adres: 
-				<input type="text" name="address" id="address" class="form-control" value="{{ news.address}}" placeholder=" {{ news.address}}"/>
-			</label>
-		<br />
-		<button type="submit" class="btn btn-primary">Zatwierdź</button>
-		<button onclick="window.location='{% url 'news' %}'" type="button" class="btn btn-primary">Powrót</button>
-	</form>
-</div>
+<br />
+
+{% include 'app/partial/article_create_partial.html' %}
+
 {% endblock %}

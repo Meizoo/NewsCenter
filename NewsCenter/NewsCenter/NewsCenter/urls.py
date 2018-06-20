@@ -25,11 +25,12 @@ urlpatterns = [
 	path(''         , app.views.default.index   , name='home'    ),
 	path('contact'  , app.views.default.contact , name='contact' ),
 	path('about'    , app.views.default.about   , name='about'   ),
-
-	path('user'					, app.views.user.index		, name='user'   ),
+	
 	path('user/user_details'    , app.views.user.details    , name='details'),
+	path('user'					, app.views.user.index		, name='user'   ),
 	path('user/edit'			, app.views.user.edit		, name='edit'   ),
 	path('user/update'			, app.views.user.update     , name='update' ),
+	path('update'			    , app.views.user.update     , name='update' ),
 
 	url(r'^signup/$', app.views.user.signup, name='signup'),
 	url(r'^login/$', auth_views.LoginView.as_view(template_name='app/user/login.html'), name='login'),

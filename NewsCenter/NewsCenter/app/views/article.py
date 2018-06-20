@@ -190,18 +190,13 @@ def delete(request, id):
 		'auth': is_logged(request),
 		'admin' : is_admin(request)
 	})
-
 def edit(request, id):
 	"""Edits article of given id"""
 	if not is_mod(request):
 		return Http404()
 
 	news = find_news(id)
-	return render(request,'app/news/edit.html', {
-		'news': news,
-		'auth': is_logged(request),
-		'admin' : is_admin(request)
-	})
+	return render(request,'app/news/edit.html', {'news': news})
 
 def update(request, id):
 	"""Updates article of given id"""

@@ -1,9 +1,22 @@
-Ôªø<div class="container form-group">
-	<form {% url 'add' pk=new.id %} method="post">
+{% extends 'app/shared/layout.html'%}
+
+{% block content %}
+{% load widget_tweaks %}
+
+<br />
+
+<div class="alert alert-info">
+	<h2>Dodaj</h2>
+</div>
+
+<br />
+
+<div class="container form-group">
+	<form method="post">
 		{% csrf_token %} 
 		<div class="form-group row">
 			<label for="title" class="col-sm-2 col-form-label">
-				Tytu≈Ç: 
+				Tytu≥: 
 			</label>
 			<div class="col-sm-10">
 				<input type="text" name="title" id="title" class="form-control" value="{{ news.title }}" placeholder=" {{ news.title }}"/>
@@ -38,7 +51,10 @@
 
 		<br/>
 
-		<button type="submit" class="btn btn-primary">Zatwierd≈∫</button>
-		<button onclick="window.location='{% url 'news' %}'" type="button" class="btn btn-primary">Powr√≥t</button>
+		<button type="submit" class="btn btn-primary">Zatwierdü</button>
+		<button onclick="window.location='{% url 'news' %}'" type="button" class="btn btn-primary">PowrÛt</button>
 	</form>
 </div>
+
+
+{% endblock %}

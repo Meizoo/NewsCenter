@@ -55,7 +55,12 @@ def signup(request):
 			return render(request, 'app/user/signup_done.html', {'user': user, 'message': message2})
 	else:
 		form = SignupForm()
-	return render(request, 'app/user/signup.html', {'title' : 'signup', 'form': form })
+	return render(request, 'app/user/signup.html', {
+		'title' : 'signup', 
+		'form': form,
+		'auth': is_logged(request),
+		'admin' : is_admin(request)
+	})
 
 def activate(request, uidb64, token):
 	try:
@@ -71,7 +76,12 @@ def activate(request, uidb64, token):
 		message = 'Dziękujemy za potwierdzenie adresu skrzynki odbiorczej. Twoje konto zostało aktywowane.'
 	else:
 		message = 'Nieprawidłowy URL aktywacyjny!'
-	return render(request, 'app/user/signup_confirm.html', {'user': user, 'message': message})
+	return render(request, 'app/user/signup_confirm.html', {
+		'user': user, 
+		'message': message,
+		'auth': is_logged(request),
+		'admin' : is_admin(request)
+	})
 
 def index(request):
 	"""Renders the users"""
@@ -83,30 +93,40 @@ def index(request):
 	})
 
 def details(request):
-	id_user = UserProfile.objects.get(id=request.user.id)
+	profile = find_profile(request)
 	is_input = False
 	submitbutton= request.POST.get('submit')
 	if submitbutton:
 		is_input = True
-	return render(request, 'app/user/user_details.html',{'user': id_user, 'is_input': is_input, 'submitbutton': submitbutton})
+	return render(request, 'app/user/user_details.html',{
+		'profile': profile, 
+		'is_input': is_input, 
+		'submitbutton': submitbutton,
+		'auth': is_logged(request),
+		'admin' : is_admin(request)
+	})
 
 def edit(request):
 	"""Edits article of given id"""
-	if not is_mod(request):
-		return Http404()
+	#if not is_mod(request):
+	#	return Http404()
 
 	user = find_profile(request)
-	return render(request,'app/user/edit.html', {'news': user})
+	return render(request,'app/user/edit.html', {
+		'news': user,
+		'auth': is_logged(request),
+		'admin' : is_admin(request)
+	})
 
 def update(request, id):
 	"""Updates article of given id"""
-	if not is_mod(request):
-		return Http404()
+	#if not is_mod(request):
+	#	return Http404()
 
 	user = find_profile(request)
 
 	if request.method == 'POST':
-		user.user.username = request.POST['username'];
+		#user.user.username = request.POST['username'];
 		user.user.name = request.POST['name'];
 		user.user.surname = request.POST['surname'];
 		user.user.age = request.POST['age'];

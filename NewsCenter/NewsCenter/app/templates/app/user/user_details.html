@@ -2,7 +2,14 @@
 
 {% block content %}
 
-<h2> Szczegóły profilu </h2>
+<br />
+
+<div class="alert alert-info">
+	<h2>Szczegóły profilu</h2>
+</div>
+
+<br />
+
 <div class="table-responsive-sm">
 	<table class="table table-light">
 	<thead class="thead-dark">
@@ -17,15 +24,16 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td scope="col"> {{ user.user.username }} </td>
-			<td scope="col"> {{ user.user.email }} </td>
-			<td scope="col"> {{ user.user.name }} </td>
-			<td scope="col"> {{ user.user.surname }} </td>
-			<td scope="col"> {{ user.user.age }} </td>
-			<td scope="col"> {{ user.role }} </td>
+			<td scope="col"> {{ profile.user.username }} </td>
+			<td scope="col"> {{ profile.user.email }} </td>
+			<td scope="col"> {{ profile.user.name }} </td>
+			<td scope="col"> {{ profile.user.surname }} </td>
+			<td scope="col"> {{ profile.user.age }} </td>
+			<td scope="col"> {{ profile.role }} </td>
 		</tr>
 	</tbody>
 	</table>
-			<button	onclick="window.location = '{% url 'edit' %}'" class="btn btn-primary" scope="col">Edycja</button>
+	
+	<button	onclick="window.location = '{% url 'edit' %}'" class="btn btn-primary" scope="col">Edycja</button>
 </div>
 {% endblock %}

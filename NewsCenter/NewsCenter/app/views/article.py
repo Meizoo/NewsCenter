@@ -168,7 +168,11 @@ def add(request):
 	else:
 		form = EntryForms()	
 
-	return render(request, 'app/news/create.html', {'form': form})
+	return render(request, 'app/news/create.html', {
+		'form': form,
+		'auth': is_logged(request),
+		'admin' : is_admin(request)
+	})
 
 def delete(request, id):
 	"""Deletes article of given id"""
@@ -181,7 +185,11 @@ def delete(request, id):
 		news.delete()
 		return HttpResponseRedirect('/news')
 	
-	return render(request,'app/news/delete.html',{'news': news })
+	return render(request,'app/news/delete.html', {
+		'news': news,
+		'auth': is_logged(request),
+		'admin' : is_admin(request)
+	})
 
 def edit(request, id):
 	"""Edits article of given id"""
@@ -189,7 +197,11 @@ def edit(request, id):
 		return Http404()
 
 	news = find_news(id)
-	return render(request,'app/news/edit.html', {'news': news})
+	return render(request,'app/news/edit.html', {
+		'news': news,
+		'auth': is_logged(request),
+		'admin' : is_admin(request)
+	})
 
 def update(request, id):
 	"""Updates article of given id"""

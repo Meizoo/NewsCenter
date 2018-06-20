@@ -1,38 +1,53 @@
 {% extends 'app/shared/layout.html'%}
 
 {% block content %}
-<div class="container form-group">
-	<br />
-	<div class="row">
-		<div >
-			<h1>Edycja</h1>
-		</div>
-	</div>
+
+<br />
+
+<div class="alert alert-info">
+	<h2>Edycja</h2>
 </div>
+
+<br />
 
 <div class="container form-group">
 	<form action="/update/{{ news.id }}" method="post">
 		{% csrf_token %} 
-		<label for="title">
-			Tytuł: 
-			<input type="text" name="title" id="title" class="form-control" value="{{ news.title }}" placeholder=" {{ news.title }}"/>
-		</label>
-		<br />
-		<label for="date">
-			Data: 
-			<input type="datetime-local" value="{{ news.date|date:"Y-m-d" }}" name="date" onfocus="(this.type='{{ news.date }}')" placeholder="{{ news.date }}" class="form-control" />
-		</label>
-		<br />
-		<label for="description">
-			Opis: 
-			<input type="text" name="description" id="descrpition" class="form-control" value="{{ news.description}}" placeholder=" {{ news.description }}"/>
-		</label>
-		<br />
-			<label for="address">
-				Adres: 
-				<input type="text" name="address" id="address" class="form-control" value="{{ news.address}}" placeholder=" {{ news.address}}"/>
+		<div class="form-group row">
+			<label for="title" class="col-sm-2 col-form-label">
+				Tytuł: 
 			</label>
+			<div class="col-sm-10">
+				<input type="text" name="title" id="title" class="form-control" value="{{ news.title }}" placeholder=" {{ news.title }}"/>
+			</div>
+		</div>
 		<br />
+		<div class="form-group row">
+			<label for="date" class="col-sm-2 col-form-label">
+				Data
+			</label>
+			<div class="col-sm-10">
+				<input type="datetime-local" value="{{ news.date|date:"Y-m-d" }}" name="date" onfocus="(this.type='{{ news.date }}')" placeholder="{{ news.date }}" class="form-control" />
+			</div>
+		</div>
+		<br />
+			
+		<div class="form-group row">
+			<label for="address" class="col-sm-2 col-form-label">
+				Adres: 
+			</label>
+			<div class="col-sm-10">
+				<input type="text" name="address" id="address" class="form-control" value="{{ news.address}}" placeholder=" {{ news.address}}"/>
+			</div>
+		</div>
+		<br />
+		
+		<label for="description" class="col-sm-2 col-form-label">
+			Opis: 
+		</label>
+
+		<textarea id="description" class="form-control" wrap="soft" value="{{ news.description}}" placeholder=" {{ news.description }}" rows="20" cols="400"></textarea>
+
 		<button type="submit" class="btn btn-primary">Zatwierdź</button>
 		<button onclick="window.location='{% url 'news' %}'" type="button" class="btn btn-primary">Powrót</button>
 	</form>

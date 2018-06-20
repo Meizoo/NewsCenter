@@ -67,8 +67,9 @@ class EntryForms(forms.Form):
 									'class': 'form-control',
 									'placeholder': 'Tytuł'}))
 	date= forms.DateTimeField(widget=forms.DateTimeInput({'class': 'form-control'}))
-	description = forms.CharField(widget = forms.Textarea({'class': 'form-control',
-									'placeholder': 'Opis'}))
+	description = forms.CharField(widget = forms.Textarea(
+		{ 'placeholder': 'Opis' }
+	))
 	address	 = forms.CharField(max_length = 32,widget=forms.TextInput({
 									'class': 'form-control',
 									'placeholder': 'Adres'}))	

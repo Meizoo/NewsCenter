@@ -4,8 +4,17 @@
 <div class="container form-group">
 	<form method="post">
 		{% csrf_token %} 
-		<h3>Czy chcesz usunąć "{{ news.title }}"?</h3>
-		<button type="submit" class="btn btn-primary">Potwierdź</button>
+		<br />
+
+		<div class="alert alert-info">
+			<h3>Czy chcesz usunąć "{{ news.title }}"?</h3>
+			<button type="submit" class="btn btn-primary">Potwierdź</button>
+		</div>
+
+		<br />
 	</form>
 </div>
+
+
+
 {% endblock %}

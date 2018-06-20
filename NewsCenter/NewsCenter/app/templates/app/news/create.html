@@ -3,27 +3,14 @@
 {% block content %}
 {% load widget_tweaks %}
 
-<div class="container form-group">
-	<br />
-	<div class="row">
-		<div >
-			<h1>Dodaj ogłoszenie</h1>
-		</div>
-	</div>
+<br />
+
+<div class="alert alert-info">
+	<h2>Dodaj</h2>
 </div>
 
-<div class="container form-group">
-	<form method="post">
-		{% csrf_token %} 
-		{% for field in form %}
-			{{ field.errors }}
-			<label>{{ field.label }}</label>
-			{{ field }}
-			<br />
-		{% endfor %}
-		<button type="submit" class="btn btn-primary">Potwierdź</button>
-		<button onclick="window.location='{% url 'news' %}'" type="button" class="btn btn-primary">Wróć</button>
-	</form>
-</div>
+<br />
+
+{% include 'app/partial/article_create_partial.html' %}
 
 {% endblock %}

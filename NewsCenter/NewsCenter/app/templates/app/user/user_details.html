@@ -10,30 +10,28 @@
 
 <br />
 
-<div class="table-responsive-sm">
-	<table class="table table-light">
-	<thead class="thead-dark">
-		<tr>
-			<th scope="col"> Nazwa użytkownika    </th> 
-			<th scope="col"> Email   </th> 
-			<th scope="col"> Imie </th> 
-			<th scope="col"> Nazwisko </th> 
-			<th scope="col"> Wiek </th> 
-			<th scope="col"> Dostęp </th> 
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td scope="col"> {{ profile.user.username }} </td>
-			<td scope="col"> {{ profile.user.email }} </td>
-			<td scope="col"> {{ profile.user.name }} </td>
-			<td scope="col"> {{ profile.user.surname }} </td>
-			<td scope="col"> {{ profile.user.age }} </td>
-			<td scope="col"> {{ profile.role }} </td>
-		</tr>
-	</tbody>
-	</table>
-	
-	<button	onclick="window.location = '{% url 'edit' %}'" class="btn btn-primary" scope="col">Edycja</button>
+<div class="card">
+	<div class="card-header {% if date > article.date %} gray {% endif %}">
+		<div class="card-title">
+			<b>
+				{{ profile.user.username }}
+			</b>
+		</div>
+	</div>
+	<div class="card-body">
+		<div class="card-text">
+			{{ profile.user.email }}    <br />
+			{{ profile.user.name }}     <br />
+			{{ profile.user.surname }}  <br />
+			{{ profile.user.age }}      <br />
+			Poziom dostępu: {{ profile.role }} <br />
+		</div>
+
+		<br />
+
+		<button	onclick="window.location = '{% url 'edit' %}'" class="btn btn-primary" scope="col">Edycja</button>
+
+	</div>
 </div>
+
 {% endblock %}

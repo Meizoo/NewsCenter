@@ -10,46 +10,6 @@
 
 <br />
 
-<div class="container form-group">
-	<form action="/update/{{ news.id }}" method="post">
-		{% csrf_token %} 
-		<div class="form-group row">
-			<label for="title" class="col-sm-2 col-form-label">
-				Tytuł: 
-			</label>
-			<div class="col-sm-10">
-				<input type="text" name="title" id="title" class="form-control" value="{{ news.title }}" placeholder=" {{ news.title }}"/>
-			</div>
-		</div>
-		<br />
-		<div class="form-group row">
-			<label for="date" class="col-sm-2 col-form-label">
-				Data
-			</label>
-			<div class="col-sm-10">
-				<input type="datetime-local" value="{{ news.date|date:"Y-m-d" }}" name="date" onfocus="(this.type='{{ news.date }}')" placeholder="{{ news.date }}" class="form-control" />
-			</div>
-		</div>
-		<br />
-			
-		<div class="form-group row">
-			<label for="address" class="col-sm-2 col-form-label">
-				Adres: 
-			</label>
-			<div class="col-sm-10">
-				<input type="text" name="address" id="address" class="form-control" value="{{ news.address}}" placeholder=" {{ news.address}}"/>
-			</div>
-		</div>
-		<br />
-		
-		<label for="description" class="col-sm-2 col-form-label">
-			Opis: 
-		</label>
+{% include 'app/partial/article_create_partial.html' %}
 
-		<textarea id="description" class="form-control" wrap="soft" value="{{ news.description}}" placeholder=" {{ news.description }}" rows="20" cols="400"></textarea>
-
-		<button type="submit" class="btn btn-primary">Zatwierdź</button>
-		<button onclick="window.location='{% url 'news' %}'" type="button" class="btn btn-primary">Powrót</button>
-	</form>
-</div>
 {% endblock %}

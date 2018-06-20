@@ -112,13 +112,20 @@ def edit(request):
 	#	return Http404()
 
 	user = find_profile(request)
+	if request.method == 'POST':
+		user.user.name = request.POST['name'];
+		user.user.surname = request.POST['surname'];
+		user.user.age = request.POST['age'];
+		user.user.email = request.POST['email'];
+		user.user.save()
+		return HttpResponseRedirect('/user')
 	return render(request,'app/user/edit.html', {
 		'news': user,
 		'auth': is_logged(request),
 		'admin' : is_admin(request)
 	})
 
-def update(request, id):
+def update(request):
 	"""Updates article of given id"""
 	#if not is_mod(request):
 	#	return Http404()
@@ -132,5 +139,5 @@ def update(request, id):
 		user.user.age = request.POST['age'];
 		user.user.email = request.POST['email'];
 		user.user.save()
-		return HttpResponseRedirect('/news')
+		return HttpResponseRedirect('/user')
 	return HttpResponseRedirect('/edit')

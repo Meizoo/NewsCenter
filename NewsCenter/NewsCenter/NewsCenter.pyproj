@@ -133,6 +133,7 @@
     <Content Include="app\templates\app\home\about.html" />
     <Content Include="app\templates\app\home\contact.html" />
     <Content Include="app\templates\app\home\index.html" />
+    <Content Include="app\templates\app\partial\article_create_partial.html" />
     <Content Include="app\templates\app\news\create.html" />
     <Content Include="app\templates\app\news\delete.html" />
     <Content Include="app\templates\app\news\details.html" />
